@@ -1,13 +1,11 @@
 :root {
-  --ink: #16181d;
-  --muted: #5b6270;
-  --line: #e4e6ea;
-  --bg: #ffffff;
-  --bg-soft: #f7f8fa;
-  --brand: #1f6f4f;
-  --brand-dark: #164f38;
-  --todo-bg: #fff4e5;
-  --todo-border: #e8a33d;
+  --ink: #1C1710;
+  --muted: #6B6157;
+  --line: #E4D8C4;
+  --bg: #FBF2E4;
+  --bg-soft: #FFFBF3;
+  --brand: #FF7A1F;
+  --brand-dark: #B24A00;
   --max: 960px;
 }
 
@@ -19,7 +17,7 @@ html, body {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   color: var(--ink);
   background: var(--bg);
   line-height: 1.6;
@@ -28,6 +26,10 @@ body {
 
 a { color: var(--brand-dark); }
 a:hover { color: var(--brand); }
+
+h1, h2, h3, h4, .brand {
+  font-family: 'Bricolage Grotesque', 'Plus Jakarta Sans', sans-serif;
+}
 
 .wrap {
   max-width: var(--max);
@@ -184,14 +186,6 @@ tr:last-child td { border-bottom: none; }
   .tier-grid { grid-template-columns: 1fr; }
 }
 
-.todo {
-  background: var(--todo-bg);
-  border: 1px dashed var(--todo-border);
-  border-radius: 8px;
-  padding: 4px 8px;
-  font-weight: 600;
-  color: #8a5a12;
-}
 
 .callout {
   background: var(--bg-soft);

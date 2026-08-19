@@ -1,88 +1,75 @@
-# Ilaka marketing site (Razorpay activation)
+# ilaka.co.in — public marketing site
 
-Throwaway static site whose only job is to pass Razorpay business-website
-review so we can get API keys. **Not the product.** Plain HTML/CSS, no build
-step, no framework, no backend. Content sourced from
-`docs/md/11_business_overview.md` in the main `ilaka-backend` repo — do not
-add claims that aren't backed by that doc without checking with Founder A.
+The live site at **https://www.ilaka.co.in**, deployed from this repo on Vercel.
+Plain static HTML/CSS/JS: no build step, no framework, no dependencies.
+
+Two layers live here:
+
+- **`index.html`** — the pre-launch landing page. A single self-contained file
+  (neo-brutalist warm-cream design, inline CSS/JS) with the waitlist capture.
+  See [`DESIGN.md`](DESIGN.md) and [`PRODUCT.md`](PRODUCT.md) for brand and voice.
+- **The legal pages** — required for Razorpay activation. Simpler layout sharing
+  `css/style.css`, themed to the same palette and fonts.
 
 ## Pages
 
 | File | Purpose |
 |---|---|
-| `index.html` | Home / landing |
+| `index.html` | Landing page + waitlist |
 | `pricing.html` | Pricing / Products & Services |
-| `terms.html` | Terms & Conditions (dummy/interim — see note below) |
+| `terms.html` | Terms & Conditions (interim — not lawyer-reviewed) |
 | `privacy.html` | Privacy Policy (DPDP Act framing) |
 | `refunds.html` | Refund & Cancellation Policy |
 | `contact.html` | Contact Us |
-| `shipping.html` | Shipping Policy note (digital goods only) |
+| `shipping.html` | Shipping Policy (digital goods only) |
 
-## TODOs before submitting to Razorpay
+## Waitlist
 
-Search the repo for `TODO` / the `.todo` highlighted spans (they render with
-an orange dashed box) — everything below must be filled in first:
+`index.html` POSTs `{ email, role }` as JSON to `WAITLIST_ENDPOINT` (declared at
+the top of the inline `<script>`) and shows the success state **only on a 2xx**.
+Every signup is also mirrored into `localStorage` under `ilaka_waitlist`.
 
-1. **Domain** — not yet decided. All internal links are relative (`pricing.html`
-   etc.) so the site works on any domain once deployed; only the support
-   email (`support@ilaka.app`, in `contact.html` and the `<meta>`/mailto)
-   needs updating once the real domain is picked.
-2. **Support email inbox** — `support@ilaka.app` is a placeholder pattern.
-   Set up a real inbox at whatever domain you land on before submission.
-3. **Phone number** — placeholder in `contact.html`.
-4. **Registered/correspondence address** — placeholder in `contact.html` and
-   in every page footer. Confirm with the CA (this is also needed for the
-   Razorpay KYC entity address, so get it once and reuse it here).
-5. **Business name matching** — every page uses **"Ilaka"**. This must match
-   the name on the Razorpay KYC / bank account exactly, or activation review
-   bounces.
-6. **`terms.html`** has an HTML comment at the very top marking it dummy/
-   interim, per the business doc's note that a lawyer-reviewed T&C is
-   required before public launch. Not visible on the rendered page — leave
-   it in place as a reminder, and replace the whole page before real launch.
-7. Both `terms.html` and `privacy.html` show `[DATE — TODO]` as "last
-   updated" — set a real date at deploy time.
+Two things must exist on the backend before signups are actually captured:
 
-## Deploying (do this yourself — no hosting credentials were touched here)
+1. `POST /waitlist` accepting `{ email, role }`.
+2. CORS allowing origin `https://www.ilaka.co.in`.
 
-Zero build step, so any static host works. Cheapest/fastest for a one-page
-marketing site:
+Until then submitters get the `support@ilaka.co.in` mailto fallback rather than a
+false confirmation.
 
-**Netlify (drag and drop)**
-1. Go to [app.netlify.com/drop](https://app.netlify.com/drop).
-2. Drag this whole folder in. You get a live HTTPS URL immediately.
-3. Site settings → Domain management → add your custom domain, follow the
-   DNS instructions (usually a CNAME or Netlify's nameservers).
+## Open items
 
-**Vercel**
-1. `npm i -g vercel` (one-time), then `vercel` in this folder, follow prompts.
-2. Or connect the GitHub repo (see below) in the Vercel dashboard for
-   auto-deploys on push.
+- **Registered office address** — pages show `Hyderabad, Telangana, India`.
+  Replace with the full street address once the CA confirms it.
+- **CIN** — incorporation pending; add to `terms.html` once issued.
+- **`support@ilaka.co.in` mailbox** — the decided support address
+  (`docs/10-plans/PRODUCTION_READINESS.md`), but the mailbox still needs creating.
+- **Terms & Privacy** — interim wording, not lawyer-reviewed. See the comment at
+  the top of `terms.html`.
+- **Legal-page "Last updated" dates** — privacy/refunds are 9 July 2026 (when
+  they were written); terms is 19 August 2026 (subscription-band clause added).
+  Bump when the text actually changes.
+- **CA confirmation on roster-indexed subscriptions is outstanding** (CR-003a,
+  PRD Open Question Q7). The bands are published here, but per CR-003 *no
+  subscription may be charged until that confirmation is in hand.*
+- **ILK-BOD-01 has not been reissued to the CA** with the roster tiers.
 
-**GitHub Pages**
-1. Push this folder to a GitHub repo.
-2. Repo Settings → Pages → deploy from `main` branch, root folder.
-3. Add custom domain in the same settings page; GitHub gives you the DNS
-   record to add (A records or CNAME depending on setup).
+## Pricing is derived, not authored
 
-Whichever you pick: confirm HTTPS is active and there's no "under
-construction" placeholder before submitting the URL to Razorpay.
+`pricing.html` mirrors `ILK-BOD-01` (Business Overview) §3.1–3.5 in the
+`ilaka-docs` repo, as amended by **CR-003a — roster-indexed subscription tiers**
+(approved 16 August 2026). Do not edit prices here directly: change the baseline
+document, then mirror it. The `terms.html` subscription clause exists to satisfy
+CR-003 §6.3 (tier changes must be transparent and pre-notified).
 
-## After the site is live — get the keys
+## Preview locally
 
-1. Sign up / log in at **dashboard.razorpay.com** with the Ilaka business
-   account (use the founder email that will own payments).
-2. Submit the live website URL wherever the activation form asks for
-   "Business website / app link." If it insists on app-store links too,
-   submit the site and email Razorpay support that the apps are pre-launch —
-   store links will follow post-launch.
-3. Complete KYC (PAN, bank, business details) to move from Test Mode to Live.
-4. **Test keys are available immediately**, before full activation — grab
-   `rzp_test_...` Key ID + Key Secret from *Settings → API Keys* and hand
-   them to Founder A so mobile can integrate checkout now, in parallel with
-   KYC review.
-5. Live keys (`rzp_live_...`) unlock after activation — deliver those once
-   approved.
+```bash
+python -m http.server 8899
+```
 
-**Never commit the Razorpay Key Secret or live keys anywhere — env vars /
-secrets manager only, hand off via a secure channel.**
+Then open http://localhost:8899. Any static server works.
+
+## Deploy
+
+Vercel is connected to this repo's `master` branch and redeploys on push.

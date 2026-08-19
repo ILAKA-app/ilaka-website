@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pricing — Ilaka</title>
 <meta name="description" content="Ilaka is free for everyone attending events and classes. See organiser fees: registration cut, subscription tiers, and boost pricing.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="assets/ilaka-icon.png">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -60,16 +64,10 @@
           <td>One-time per student, first month only</td>
         </tr>
         <tr>
-          <td>Organiser subscription — Growth tier</td>
+          <td>Organiser subscription — roster-indexed</td>
           <td>Monthly SaaS fee from organiser</td>
-          <td>₹299 / month</td>
-          <td>Unlimited listings, analytics, verified badge</td>
-        </tr>
-        <tr>
-          <td>Organiser subscription — Pro tier</td>
-          <td>Monthly SaaS fee from organiser</td>
-          <td>₹799 / month</td>
-          <td>Priority placement, discount codes, free monthly boost</td>
+          <td>₹0 – ₹1,999 / month</td>
+          <td>Five bands set by the organiser's active roster; free below 11 members</td>
         </tr>
         <tr>
           <td>Promoted listings / boost fee</td>
@@ -80,37 +78,47 @@
       </tbody>
     </table>
 
-    <h2>Organiser subscription tiers</h2>
-    <div class="tier-grid">
-      <div class="tier">
-        <h3>Free</h3>
-        <div class="price">₹0</div>
-        <ul>
-          <li>Up to 2 active listings</li>
-          <li>Basic statistics (views, registrations)</li>
-        </ul>
-      </div>
-      <div class="tier highlight">
-        <h3>Growth</h3>
-        <div class="price">₹299<span style="font-size:0.9rem;font-weight:400;">/mo</span></div>
-        <ul>
-          <li>Unlimited listings</li>
-          <li>Full analytics &amp; user demographics</li>
-          <li>Verified organiser badge</li>
-          <li>Repeating / recurring scheduling</li>
-        </ul>
-      </div>
-      <div class="tier">
-        <h3>Pro</h3>
-        <div class="price">₹799<span style="font-size:0.9rem;font-weight:400;">/mo</span></div>
-        <ul>
-          <li>Everything in Growth</li>
-          <li>Discount code creation</li>
-          <li>Priority in recommendation algorithm</li>
-          <li>1 complimentary promoted listing / month</li>
-        </ul>
-      </div>
+    <h2>Organiser subscription bands</h2>
+    <p>The monthly subscription is indexed to the size of the organiser's <strong>active roster</strong>, not charged as a flat tier. A flat fee is simultaneously a deterrent to the smallest organisers and a substantial under-recovery from the largest. Banding holds the fee within roughly 0.5–1.0% of the organiser's own gross receipts at every size, and organisers move between bands automatically as their roster grows — no renegotiation.</p>
+
+    <table>
+      <thead>
+        <tr><th>Band</th><th>Active roster</th><th>Monthly fee</th><th>Approx. % of organiser gross</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Free</td><td>0 – 10</td><td>₹0</td><td>0%</td></tr>
+        <tr><td>Starter</td><td>11 – 30</td><td>₹199</td><td>~0.9%</td></tr>
+        <tr><td>Growth</td><td>31 – 75</td><td>₹499</td><td>~1.0%</td></tr>
+        <tr><td>Pro</td><td>76 – 200</td><td>₹999</td><td>~0.7%</td></tr>
+        <tr><td>Pro Plus</td><td>Above 200</td><td>₹1,999</td><td>≤0.5%</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <strong>Active roster</strong> is the greater of (a) the total membership of communities the organiser owns on the platform, and (b) the number of distinct users who registered for any of that organiser's listings in the trailing twelve months. Both are aggregate counts already held by the platform — no identifiable participant data is used in, or disclosed by, this calculation.
     </div>
+
+    <h2>What each band includes</h2>
+    <table>
+      <thead>
+        <tr><th>Feature</th><th>Free</th><th>Starter / Growth</th><th>Pro / Pro Plus</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Active event / class listings</td><td>Up to 2</td><td>Unlimited</td><td>Unlimited</td></tr>
+        <tr><td>Basic statistics (views, registrations)</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+        <tr><td>Repeating / recurring event scheduling</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+        <tr><td>Community creation (subject to verification status)</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+        <tr><td>Full analytics and user demographics</td><td>No</td><td>Yes</td><td>Yes</td></tr>
+        <tr><td>Verified organiser badge</td><td>No</td><td>Yes</td><td>Yes</td></tr>
+        <tr><td>Discount code creation</td><td>No</td><td>No</td><td>Yes</td></tr>
+        <tr><td>Priority in recommendation algorithm</td><td>No</td><td>No</td><td>Yes</td></tr>
+        <tr><td>One complimentary promoted listing per month</td><td>No</td><td>No</td><td>Yes</td></tr>
+      </tbody>
+    </table>
+
+    <p>Recurring scheduling and community creation are available in the free band by design: they are the means by which an organiser accumulates a roster. Community creation continues to require completed KYC verification irrespective of band.</p>
+
+    <p>Band changes are notified to the organiser in advance. An <strong>increase takes effect from the following billing cycle</strong>; a <strong>decrease takes effect immediately</strong>.</p>
 
     <h2>Promoted listings / boost fees</h2>
     <table>
@@ -145,7 +153,7 @@
       </div>
     </div>
     <div class="foot-bottom">
-      &copy; 2026 Ilaka. All rights reserved. Ilaka (Private Limited Company, incorporation pending) — <span class="todo">Hyderabad, Telangana, India — full registered office address pending CA confirmation</span>
+      &copy; 2026 Ilaka. All rights reserved. Ilaka (Private Limited Company, incorporation pending) — Hyderabad, Telangana, India.
     </div>
   </div>
 </footer>
