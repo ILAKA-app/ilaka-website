@@ -1,0 +1,121 @@
+<!--
+  INTERNAL NOTE — NOT FOR PUBLIC VIEW BEYOND THIS COMMENT:
+  This page satisfies the Play Store requirement for a public account-deletion
+  request path (docs/PRODUCTION_READINESS.md §10, ilaka-website issue #1). There
+  is no self-serve DELETE /me endpoint yet (tracked in ilaka-backend #24), so this
+  is a ticketed process via support@ilaka.co.in rather than an in-page form —
+  do not add a live form here until that endpoint exists; a form that can't
+  actually submit anywhere would be a fake confirmation, which this site
+  deliberately avoids elsewhere (see the waitlist fallback in index.html).
+  TODO: once ilaka-backend #24 ships, wire this to the real endpoint and update
+  the in-app Profile → Delete Account path to match.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Delete Your Account — Ilaka</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="assets/ilaka-icon.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="index.html">ilaka<span>.</span></a>
+    <nav class="main">
+      <a href="index.html">Home</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="terms.html">Terms</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="refunds.html">Refunds</a>
+      <a href="contact.html">Contact</a>
+      <a class="nav-cta" href="index.html#join">Join waitlist</a>
+    </nav>
+  </div>
+</header>
+
+<div class="page-header">
+  <div class="wrap">
+    <h1>Delete Your Account</h1>
+    <p class="dek">How to request deletion of your Ilaka account and personal data.</p>
+  </div>
+</div>
+
+<main>
+  <div class="wrap policy-doc">
+
+    <h2>What deletion means</h2>
+    <p>When you request account deletion, we:</p>
+    <ul>
+      <li>Delete your profile and personal data (name, mobile number, locality, activity preferences).</li>
+      <li>Remove your community memberships.</li>
+      <li>Dissociate — but do not destroy — financial records (registrations, payments, invoices), which we're required to retain for a period under RBI and GST regulations. These are kept in a form no longer linked to your identity.</li>
+    </ul>
+
+    <div class="callout">
+      You can also start this from inside the Ilaka app, under <strong>Profile &rarr; Delete Account</strong>, once that's available in your app version. Until then, the request below works the same way.
+    </div>
+
+    <h2>How to request deletion</h2>
+    <div class="steps">
+      <div class="step">
+        <span class="num">1</span>
+        <p>Email <a href="mailto:support@ilaka.co.in?subject=Account%20Deletion%20Request">support@ilaka.co.in</a> with the subject "Account Deletion Request", from the email or with the mobile number your account is registered under.</p>
+      </div>
+      <div class="step">
+        <span class="num">2</span>
+        <p>We verify the request against your registered mobile number to confirm it's really you.</p>
+      </div>
+      <div class="step">
+        <span class="num">3</span>
+        <p>We process the deletion and reply once it's done, per the DPDP Act, 2023.</p>
+      </div>
+    </div>
+
+    <p style="margin-top:28px">
+      <a class="nav-cta" href="mailto:support@ilaka.co.in?subject=Account%20Deletion%20Request">Request account deletion</a>
+    </p>
+
+    <h2>Questions</h2>
+    <p>See our <a href="privacy.html">Privacy Policy</a> for the full picture of what we collect and why, or reach us via <a href="contact.html">Contact Us</a> for anything else.</p>
+
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="foot-wordmark" href="index.html">ilaka<span>.</span></a>
+        Hyperlocal community, events &amp; classes — starting in Sainikpuri, Hyderabad.
+      </div>
+      <div class="foot-links">
+        <div class="foot-col-title">Legal</div>
+        <a href="terms.html">Terms &amp; Conditions</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="refunds.html">Refund &amp; Cancellation</a>
+        <a href="shipping.html">Shipping Policy</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="delete-account.html">Delete Account</a>
+      </div>
+      <div class="foot-links">
+        <div class="foot-col-title">Connect</div>
+        <a href="contact.html">Contact us</a>
+        <a href="mailto:support@ilaka.co.in">support@ilaka.co.in</a>
+        <span style="font-size:0.87rem">Sainikpuri, Hyderabad</span>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; 2026 Ilaka. All rights reserved. Ilaka (Private Limited Company, incorporation pending) — Hyderabad, Telangana, India.</span>
+      <span>Made in Sainikpuri, Hyderabad.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
