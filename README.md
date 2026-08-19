@@ -72,6 +72,9 @@ Then open http://localhost:8899. Any static server works.
 
 ## Deploy
 
+> **Deploying? Read [`DEPLOY.md`](DEPLOY.md)** — step-by-step, written for whoever
+> holds the Vercel account.
+
 **This repo is not currently wired to Vercel.** It has no GitHub webhook, no
 recorded deployments, and no `.vercel` project link — pushing to `master` does
 **not** update the live site. The version serving ilaka.co.in was deployed
