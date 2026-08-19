@@ -72,4 +72,21 @@ Then open http://localhost:8899. Any static server works.
 
 ## Deploy
 
-Vercel is connected to this repo's `master` branch and redeploys on push.
+**This repo is not currently wired to Vercel.** It has no GitHub webhook, no
+recorded deployments, and no `.vercel` project link — pushing to `master` does
+**not** update the live site. The version serving ilaka.co.in was deployed
+manually and has been frozen since 14 August 2026.
+
+To make pushes deploy (do this once):
+
+1. Vercel dashboard → Add New → Project → import `ILAKA-app/ilaka-website`.
+2. Framework preset **Other**, root directory `./`, no build command,
+   output directory `./`.
+3. Assign the existing `ilaka.co.in` + `www.ilaka.co.in` domains to the new
+   project (they are currently attached to the old manual deployment).
+
+After that, `master` redeploys on every push. Until then, deploy by hand:
+
+```bash
+npx vercel --prod
+```
