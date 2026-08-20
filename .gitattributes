@@ -1,0 +1,27 @@
+# Normalise text to LF in the repository and in the working tree.
+#
+# This working copy lives on an exFAT volume and was previously checked out on
+# Windows with core.autocrlf=true, which rewrote every tracked file to CRLF and
+# made all four repos report their entire tree as modified. Pinning eol=lf here
+# makes the result the same on every machine, whatever a client's autocrlf says.
+* text=auto eol=lf
+
+# Binary — never line-ending-converted, never diffed as text.
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.svgz  binary
+*.ico   binary
+*.pdf   binary
+*.zip   binary
+*.docx  binary
+*.xlsx  binary
+*.woff  binary
+*.woff2 binary
+*.ttf   binary
+*.otf   binary
+*.jks   binary
+*.keystore binary
+*.apk   binary
+*.aab   binary
