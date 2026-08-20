@@ -29,13 +29,21 @@ Two layers live here:
 the top of the inline `<script>`) and shows the success state **only on a 2xx**.
 Every signup is also mirrored into `localStorage` under `ilaka_waitlist`.
 
-Two things must exist on the backend before signups are actually captured:
+Both backend prerequisites are now built in `ilaka-backend` (`src/waitlist/`):
 
-1. `POST /waitlist` accepting `{ email, role }`.
-2. CORS allowing origin `https://www.ilaka.co.in`.
+1. ✅ `POST /api/v1/waitlist` accepting `{ email, role }` — idempotent per email,
+   rate limited to 5/min per IP.
+2. ✅ CORS allows `https://www.ilaka.co.in` and `https://ilaka.co.in`.
 
-Until then submitters get the `support@ilaka.co.in` mailto fallback rather than a
-false confirmation.
+**Still outstanding:** `WAITLIST_ENDPOINT` points at `https://api.ilaka.co.in/api/v1/waitlist`
+— the production API hostname decided 2026-07-15 — and that host does not resolve
+yet. Signups are captured only once the backend is deployed there and the DNS
+record exists. Until then submitters get the `support@ilaka.co.in` mailto fallback
+rather than a false confirmation — **and that mailbox still needs creating**, so
+today a signup reaches nobody.
+
+The previous value pointed at a deleted Railway host, at a path that also omitted
+the `/api/v1` global prefix, so it could never have captured a signup.
 
 ## Open items
 
