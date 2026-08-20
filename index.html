@@ -457,22 +457,35 @@
 (function(){
   "use strict";
 
-  /* ---- Where waitlist signups go: our own backend. POSTs { email, role }
-     as JSON and only shows success on a 2xx, so a signup is never silently
-     dropped. Every signup is also mirrored to localStorage as a backup.
+  /* ---- Where waitlist signups go. POSTs { email, role } as JSON and only
+     shows success on a 2xx, so a signup is never silently dropped. Every
+     signup is also mirrored to localStorage as a backup.
 
-     Backend side is now built (ilaka-backend `src/waitlist/`): POST /waitlist
-     accepts { email, role }, is idempotent per email, and CORS allows both
-     ilaka.co.in and www.ilaka.co.in.
+     ┌─ ACTION REQUIRED ─────────────────────────────────────────────────┐
+     │ Paste a form-service endpoint below and signups start landing.    │
+     │ Until then the form falls back to the mailto — and that mailbox   │
+     │ does not exist yet, so signups currently reach nobody.            │
+     └───────────────────────────────────────────────────────────────────┘
 
-     REMAINING PREREQUISITE: this points at api.ilaka.co.in — the production
-     API hostname decided on 2026-07-15 (PRODUCTION_READINESS.md §1.3) — which
-     does NOT resolve yet. The previous value pointed at a Railway host that has
-     since been deleted, and at a path missing the /api/v1 global prefix, so it
-     could never have worked. Until the API is deployed and the DNS record
-     exists, submitters keep seeing the mailto fallback below; no further edit
-     to this file is needed once it does. ---- */
-  var WAITLIST_ENDPOINT = "https://api.ilaka.co.in/api/v1/waitlist";
+     INTERIM (now): any hosted form service works, as long as it
+       (a) accepts a cross-origin JSON POST from https://www.ilaka.co.in,
+       (b) returns a 2xx the browser can read.
+     Formspree, Web3Forms and Tally all satisfy both. Create a form, then
+     paste its endpoint URL below — no other edit needed. The body we send
+     is { email, role }, so the service records both columns as-is.
+
+     Deliberately vendor-neutral: we send plain JSON and read only the
+     status code, so switching services is a one-line change here.
+
+     LATER (when the backend is deployed): swap the value back to
+       https://api.ilaka.co.in/api/v1/waitlist
+     which is already built (ilaka-backend `src/waitlist/`) — idempotent per
+     email, rate limited, CORS already allows both ilaka.co.in and
+     www.ilaka.co.in. Read signups back with `npm run waitlist:export`.
+     Any addresses collected by the form service in the meantime need
+     importing into that table by hand, or you will mail one cohort and not
+     the other. ---- */
+  var WAITLIST_ENDPOINT = ""; /* <-- paste the form endpoint here */
   var SUPPORT_EMAIL = "support@ilaka.co.in";
 
   var state = { role: "business", email: "", submitted: false };
@@ -524,10 +537,19 @@
   // Resolves true only when the backend actually accepted the signup.
   function persist(email){
     backup(email);
+    /* No endpoint configured yet — fail closed to the mailto rather than
+       showing a confirmation for a signup nobody received. */
     if (!WAITLIST_ENDPOINT) return Promise.resolve(false);
     return fetch(WAITLIST_ENDPOINT, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        /* Form services (Formspree et al.) redirect to an HTML thank-you page
+           unless the request asks for JSON; with this they return a readable
+           JSON response and the CORS headers to go with it. Harmless against
+           our own backend, which only ever answers JSON. */
+        "Accept": "application/json"
+      },
       body: JSON.stringify({ email: email, role: state.role })
     }).then(function(r){ return r.ok; }).catch(function(){ return false; });
   }
