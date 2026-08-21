@@ -458,16 +458,25 @@
 (function(){
   "use strict";
 
-  /* ---- Where waitlist signups go: our own backend. POSTs { email, role }
-     as JSON and only shows success on a 2xx, so a signup is never silently
-     dropped. Every signup is also mirrored to localStorage as a backup.
+  /* ---- Where waitlist signups go. POSTs { email, role } and only shows
+     success on a 2xx, so a signup is never silently dropped. Every signup
+     is also mirrored to localStorage as a backup.
 
-     PREREQUISITES on the backend before this works in production:
-       1. POST /waitlist must exist and accept { email, role }.
-       2. CORS must allow origin https://www.ilaka.co.in (the backend
-          currently sends no CORS headers, so this call will fail).
-     Until both land, submitters see the mailto fallback below. ---- */
-  var WAITLIST_ENDPOINT = "https://backend-production-dfd0.up.railway.app/waitlist";
+     Backend: the old target (Railway) was deleted and api.ilaka.co.in
+     doesn't resolve — ilaka-backend has no `waitlist` module to point at
+     even once a host exists. Until that's built and deployed, signups go
+     to a Google Sheet via an Apps Script Web App (0 infra, 0 cost):
+       1. New Google Sheet → Extensions → Apps Script → paste the doPost
+          handler from `waitlist-backend.gs` in this repo.
+       2. Deploy → New deployment → type "Web app" → execute as "Me",
+          access "Anyone" → copy the /exec URL below.
+     Content-Type is deliberately text/plain, not application/json: Apps
+     Script Web Apps don't answer CORS preflight (OPTIONS), and JSON as a
+     Content-Type forces the browser to send one. text/plain is a
+     CORS-safelisted type, so no preflight fires, and the server still
+     parses the body as JSON from the raw request. Swap this comment and
+     the header if the endpoint is ever swapped for a real JSON API. ---- */
+  var WAITLIST_ENDPOINT = ""; /* <-- paste the Apps Script /exec URL here */
   var SUPPORT_EMAIL = "support@ilaka.co.in";
 
   var state = { role: "business", email: "", submitted: false };
@@ -519,10 +528,15 @@
   // Resolves true only when the backend actually accepted the signup.
   function persist(email){
     backup(email);
+    /* No endpoint configured yet — fail closed to the mailto rather than
+       showing a confirmation for a signup nobody received. */
     if (!WAITLIST_ENDPOINT) return Promise.resolve(false);
     return fetch(WAITLIST_ENDPOINT, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      /* text/plain avoids a CORS preflight against the Apps Script Web App
+         (see the WAITLIST_ENDPOINT comment above) — the server still reads
+         this body as JSON. */
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
       body: JSON.stringify({ email: email, role: state.role })
     }).then(function(r){ return r.ok; }).catch(function(){ return false; });
   }
