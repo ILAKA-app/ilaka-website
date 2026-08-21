@@ -457,35 +457,25 @@
 (function(){
   "use strict";
 
-  /* ---- Where waitlist signups go. POSTs { email, role } as JSON and only
-     shows success on a 2xx, so a signup is never silently dropped. Every
-     signup is also mirrored to localStorage as a backup.
+  /* ---- Where waitlist signups go. POSTs { email, role } and only shows
+     success on a 2xx, so a signup is never silently dropped. Every signup
+     is also mirrored to localStorage as a backup.
 
-     ┌─ ACTION REQUIRED ─────────────────────────────────────────────────┐
-     │ Paste a form-service endpoint below and signups start landing.    │
-     │ Until then the form falls back to the mailto — and that mailbox   │
-     │ does not exist yet, so signups currently reach nobody.            │
-     └───────────────────────────────────────────────────────────────────┘
-
-     INTERIM (now): any hosted form service works, as long as it
-       (a) accepts a cross-origin JSON POST from https://www.ilaka.co.in,
-       (b) returns a 2xx the browser can read.
-     Formspree, Web3Forms and Tally all satisfy both. Create a form, then
-     paste its endpoint URL below — no other edit needed. The body we send
-     is { email, role }, so the service records both columns as-is.
-
-     Deliberately vendor-neutral: we send plain JSON and read only the
-     status code, so switching services is a one-line change here.
-
-     LATER (when the backend is deployed): swap the value back to
-       https://api.ilaka.co.in/api/v1/waitlist
-     which is already built (ilaka-backend `src/waitlist/`) — idempotent per
-     email, rate limited, CORS already allows both ilaka.co.in and
-     www.ilaka.co.in. Read signups back with `npm run waitlist:export`.
-     Any addresses collected by the form service in the meantime need
-     importing into that table by hand, or you will mail one cohort and not
-     the other. ---- */
-  var WAITLIST_ENDPOINT = ""; /* <-- paste the form endpoint here */
+     Backend: the old target (Railway) was deleted and api.ilaka.co.in
+     doesn't resolve — ilaka-backend has no `waitlist` module to point at
+     even once a host exists. Until that's built and deployed, signups go
+     to a Google Sheet via an Apps Script Web App (0 infra, 0 cost):
+       1. New Google Sheet → Extensions → Apps Script → paste the doPost
+          handler from `waitlist-backend.gs` in this repo.
+       2. Deploy → New deployment → type "Web app" → execute as "Me",
+          access "Anyone" → copy the /exec URL below.
+     Content-Type is deliberately text/plain, not application/json: Apps
+     Script Web Apps don't answer CORS preflight (OPTIONS), and JSON as a
+     Content-Type forces the browser to send one. text/plain is a
+     CORS-safelisted type, so no preflight fires, and the server still
+     parses the body as JSON from the raw request. Swap this comment and
+     the header if the endpoint is ever swapped for a real JSON API. ---- */
+  var WAITLIST_ENDPOINT = ""; /* <-- paste the Apps Script /exec URL here */
   var SUPPORT_EMAIL = "support@ilaka.co.in";
 
   var state = { role: "business", email: "", submitted: false };
@@ -542,14 +532,10 @@
     if (!WAITLIST_ENDPOINT) return Promise.resolve(false);
     return fetch(WAITLIST_ENDPOINT, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        /* Form services (Formspree et al.) redirect to an HTML thank-you page
-           unless the request asks for JSON; with this they return a readable
-           JSON response and the CORS headers to go with it. Harmless against
-           our own backend, which only ever answers JSON. */
-        "Accept": "application/json"
-      },
+      /* text/plain avoids a CORS preflight against the Apps Script Web App
+         (see the WAITLIST_ENDPOINT comment above) — the server still reads
+         this body as JSON. */
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
       body: JSON.stringify({ email: email, role: state.role })
     }).then(function(r){ return r.ok; }).catch(function(){ return false; });
   }
