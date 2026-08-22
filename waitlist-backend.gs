@@ -20,10 +20,10 @@ function doPost(e) {
   try {
     var data = JSON.parse(e.postData.contents);
     var email = String(data.email || "").trim().toLowerCase();
-    var role = String(data.role || "").trim();
+    var role = String(data.role || "").trim().slice(0, 40);
     var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (!emailRe.test(email)) {
+    if (email.length > 254 || !emailRe.test(email)) {
       return jsonOut({ ok: false, error: "invalid_email" });
     }
 

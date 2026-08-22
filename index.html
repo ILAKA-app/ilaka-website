@@ -125,7 +125,7 @@
             <button class="role-btn" data-role="participant">I'm looking for things to do</button>
           </div>
           <form class="wl-form" novalidate style="display:flex;gap:10px;flex-wrap:wrap">
-            <input type="email" class="wl-email" placeholder="you@email.com" autocomplete="email" style="flex:1 1 220px;min-width:200px;padding:14px 18px;border:2.5px solid var(--ink);border-radius:12px;font-size:15px;font-family:'Plus Jakarta Sans',sans-serif;background:var(--card);color:var(--ink)" />
+            <input type="email" class="wl-email" placeholder="you@email.com" autocomplete="email" maxlength="254" style="flex:1 1 220px;min-width:200px;padding:14px 18px;border:2.5px solid var(--ink);border-radius:12px;font-size:15px;font-family:'Plus Jakarta Sans',sans-serif;background:var(--card);color:var(--ink)" />
             <button type="submit" class="pop sh-ink" style="padding:14px 24px;background:var(--accent);color:var(--ink);border:2.5px solid var(--ink);border-radius:12px;font-weight:800;font-family:'Bricolage Grotesque',sans-serif;font-size:15px;cursor:pointer">Join the waitlist</button>
           </form>
           <p class="wl-error" hidden></p>
@@ -407,7 +407,7 @@
           <button class="role-btn" data-role="participant">I'm looking for things to do</button>
         </div>
         <form class="wl-form" novalidate style="display:flex;gap:10px;flex-wrap:wrap">
-          <input type="email" class="wl-email" placeholder="you@email.com" autocomplete="email" style="flex:1 1 200px;min-width:180px;padding:14px 18px;border:2.5px solid var(--ink);border-radius:12px;font-size:15px;font-family:'Plus Jakarta Sans',sans-serif;background:var(--card);color:var(--ink)" />
+          <input type="email" class="wl-email" placeholder="you@email.com" autocomplete="email" maxlength="254" style="flex:1 1 200px;min-width:180px;padding:14px 18px;border:2.5px solid var(--ink);border-radius:12px;font-size:15px;font-family:'Plus Jakarta Sans',sans-serif;background:var(--card);color:var(--ink)" />
           <button type="submit" class="fade" style="padding:14px 24px;background:var(--ink);color:var(--paper);border:2.5px solid var(--ink);border-radius:12px;font-weight:800;font-family:'Bricolage Grotesque',sans-serif;font-size:15px;cursor:pointer">Join the waitlist</button>
         </form>
         <p class="wl-error" hidden></p>
@@ -475,7 +475,7 @@
      CORS-safelisted type, so no preflight fires, and the server still
      parses the body as JSON from the raw request. Swap this comment and
      the header if the endpoint is ever swapped for a real JSON API. ---- */
-  var WAITLIST_ENDPOINT = ""; /* <-- paste the Apps Script /exec URL here */
+  var WAITLIST_ENDPOINT = "https://script.google.com/macros/s/AKfycbx0AGOjk4JJX5RimgO-4JWeVVmkgI8_VVOwZBhDAmQc0q3-AY1c3lGb4fjxsRBWgmNU/exec";
   var SUPPORT_EMAIL = "support@ilaka.co.in";
 
   var state = { role: "business", email: "", submitted: false };
@@ -485,6 +485,7 @@
     participant: "You're on the list! We'll ping you the moment Ilaka goes live near you."
   };
   var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  var EMAIL_MAX_LEN = 254; // RFC 5321 4.5.3.1.3
 
   var blocks = Array.prototype.slice.call(document.querySelectorAll(".wl"));
 
@@ -569,7 +570,7 @@
       form.addEventListener("submit", function(e){
         e.preventDefault();
         var email = (input ? input.value : state.email || "").trim();
-        if (!EMAIL_RE.test(email)){
+        if (!email || email.length > EMAIL_MAX_LEN || !EMAIL_RE.test(email)){
           if (err){ err.textContent = "Enter a valid email address"; err.hidden = false; }
           return;
         }
