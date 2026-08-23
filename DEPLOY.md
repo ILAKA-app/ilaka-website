@@ -101,30 +101,20 @@ Vercel dashboard → the project → **Deployments** → find the last good one 
 
 ---
 
-## Two things that are NOT done yet
+## Fixed since this doc was written
 
-**1. The waitlist form does not capture anything.**
-`index.html` POSTs `{ email, role }` as JSON to:
+The waitlist form's dead-endpoint problem described below is resolved:
+`ilaka-backend` now has a real, deployed `POST /api/v1/waitlist` (Railway),
+CORS included, and `index.html`/`WAITLIST_ENDPOINT` point at it. See
+[ilaka-backend#45](https://github.com/ILAKA-app/ilaka-backend/pull/45) and
+[#3](https://github.com/ILAKA-app/ilaka-website/pull/3). None of this is live
+on `www.ilaka.co.in` until the Git integration above is wired up, though —
+that's still the one blocker standing between a merge here and the public site
+actually changing.
 
-```
-https://backend-production-dfd0.up.railway.app/waitlist
-```
+## One thing that is NOT done yet
 
-That endpoint **does not exist**, and the backend sends **no CORS headers**, so
-the browser call fails twice over. The page handles this honestly — it shows a
-"couldn't reach our server, email us" fallback rather than a fake confirmation —
-but nobody is joining a list.
-
-To fix, on the backend:
-
-- Add `POST /waitlist` accepting `{ email: string, role: "business" | "participant" }`,
-  returning 2xx on success. The page treats any non-2xx as failure.
-- Enable CORS for origin `https://www.ilaka.co.in`.
-
-If the endpoint path or shape differs, update `WAITLIST_ENDPOINT` at the top of
-the inline `<script>` in `index.html`.
-
-**2. Pricing is published but not chargeable.**
+**Pricing is published but not chargeable.**
 `pricing.html` shows the CR-003a roster-indexed bands (₹0 / ₹199 / ₹499 / ₹999 /
 ₹1,999). **CR-003 requires CA confirmation before any subscription is charged**,
 and that is still outstanding (PRD Open Question Q7). Publishing the bands is
