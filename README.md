@@ -29,31 +29,16 @@ Two layers live here:
 the top of the inline `<script>`) and shows the success state **only on a 2xx**.
 Every signup is also mirrored into `localStorage` under `ilaka_waitlist`.
 
-### ⚠️ Action required: paste a form endpoint
+`WAITLIST_ENDPOINT` currently points at `ilaka-backend`'s deployed Railway host
+(`.../api/v1/waitlist`), not the `api.ilaka.co.in` custom domain — DNS for that
+subdomain isn't wired up yet. Once it is, switch this to
+`https://api.ilaka.co.in/api/v1/waitlist` so the URL doesn't depend on Railway's
+service hostname. The endpoint is idempotent per email, rate limited to 5/min per
+IP, and CORS already allows both `ilaka.co.in` and `www.ilaka.co.in`. Read
+signups back with `npm run waitlist:export` in `ilaka-backend`.
 
-`WAITLIST_ENDPOINT` in `index.html` is **empty**, so the form falls back to the
-`support@ilaka.co.in` mailto — and that mailbox does not exist yet. Until one of
-the two options below is done, **a signup reaches nobody.**
-
-**Option A — now, no backend needed.** Create a form on any hosted form service
-and paste its endpoint URL into `WAITLIST_ENDPOINT`. The service only has to
-accept a cross-origin JSON POST from `https://www.ilaka.co.in` and return a 2xx
-the browser can read; Formspree, Web3Forms and Tally all do. We send
-`{ email, role }` and read only the status code, so switching services is a
-one-line change. Check the service's free-tier submission cap before relying on it.
-
-**Option B — when the backend is deployed.** Set it to
-`https://api.ilaka.co.in/api/v1/waitlist`. That endpoint is already built in
-`ilaka-backend` (`src/waitlist/`): idempotent per email, rate limited to 5/min per
-IP, and CORS already allows both `ilaka.co.in` and `www.ilaka.co.in`. Read signups
-back with `npm run waitlist:export`.
-
-If you do A first and B later, **the addresses collected by the form service need
-importing into the `waitlist_signups` table by hand** — otherwise you will mail one
-cohort at launch and not the other.
-
-The original value pointed at a deleted Railway host, at a path that also omitted
-the `/api/v1` global prefix, so it could never have captured a signup either way.
+(Earlier revisions of this doc described the endpoint as unset, then as a Google
+Apps Script stopgap — both superseded now that the real backend is deployed.)
 
 ## Open items
 
