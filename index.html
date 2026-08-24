@@ -65,13 +65,6 @@
     font-weight:600;border:2.5px solid var(--ink)}
   [hidden]{display:none !important}
 
-  /* image placeholders (image-slot stand-ins) */
-  .imgph{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;
-    background-color:#F3E7D2;color:rgba(28,23,16,0.55);text-align:center;padding:16px;
-    background-image:radial-gradient(rgba(28,23,16,0.07) 1.4px, transparent 1.5px);background-size:16px 16px}
-  .imgph .emoji{font-size:42px;line-height:1}
-  .imgph .lbl{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
-
   /* faq accordion */
   .faq-item{border-bottom:2px solid rgba(251,242,228,0.18);padding:22px 0}
   .faq-item:last-child{border-bottom:none}
@@ -227,7 +220,7 @@
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:26px">
 
         <div style="background:var(--card);border:2.5px solid var(--ink);border-radius:20px;overflow:hidden;box-shadow:6px 6px 0 rgba(28,23,16,0.14)">
-          <div class="imgph" style="height:190px"><div class="emoji">🧘‍♀️</div><div class="lbl">Morning yoga</div></div>
+          <img src="assets/photos/yoga.jpg" alt="A group holding a stretch together at an open-air morning yoga session" loading="lazy" style="width:100%;height:190px;object-fit:cover;display:block;border-bottom:2.5px solid var(--ink)" />
           <div style="padding:20px">
             <div style="display:inline-block;padding:4px 10px;background:var(--accent);border-radius:100px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink);margin-bottom:10px">Wellness</div>
             <h3 style="font-weight:700;font-size:18px;margin:0 0 6px">Morning Yoga Circle</h3>
@@ -236,7 +229,7 @@
         </div>
 
         <div style="background:var(--card);border:2.5px solid var(--ink);border-radius:20px;overflow:hidden;box-shadow:6px 6px 0 rgba(28,23,16,0.14)">
-          <div class="imgph" style="height:190px"><div class="emoji">🏃‍♀️</div><div class="lbl">Run club</div></div>
+          <img src="assets/photos/run-club.jpg" alt="A run club crowded together over coffee after a morning run" loading="lazy" style="width:100%;height:190px;object-fit:cover;display:block;border-bottom:2.5px solid var(--ink)" />
           <div style="padding:20px">
             <div style="display:inline-block;padding:4px 10px;background:var(--accent);border-radius:100px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink);margin-bottom:10px">Fitness</div>
             <h3 style="font-weight:700;font-size:18px;margin:0 0 6px">Saturday Run Club</h3>
@@ -245,7 +238,7 @@
         </div>
 
         <div style="background:var(--card);border:2.5px solid var(--ink);border-radius:20px;overflow:hidden;box-shadow:6px 6px 0 rgba(28,23,16,0.14)">
-          <div class="imgph" style="height:190px"><div class="emoji">🏺</div><div class="lbl">Pottery workshop</div></div>
+          <img src="assets/photos/pottery.jpg" alt="A potter shaping a cup on the wheel at a workbench full of tools and finished pieces" loading="lazy" style="width:100%;height:190px;object-fit:cover;display:block;border-bottom:2.5px solid var(--ink)" />
           <div style="padding:20px">
             <div style="display:inline-block;padding:4px 10px;background:var(--accent);border-radius:100px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink);margin-bottom:10px">Craft</div>
             <h3 style="font-weight:700;font-size:18px;margin:0 0 6px">Weekend Pottery Workshop</h3>
@@ -254,7 +247,7 @@
         </div>
 
         <div style="background:var(--card);border:2.5px solid var(--ink);border-radius:20px;overflow:hidden;box-shadow:6px 6px 0 rgba(28,23,16,0.14)">
-          <div class="imgph" style="height:190px"><div class="emoji">💻</div><div class="lbl">Coding bootcamp</div></div>
+          <img src="assets/photos/coding-bootcamp.jpg" alt="Two people working through code together on laptops at a small bootcamp table" loading="lazy" style="width:100%;height:190px;object-fit:cover;display:block;border-bottom:2.5px solid var(--ink)" />
           <div style="padding:20px">
             <div style="display:inline-block;padding:4px 10px;background:var(--accent);border-radius:100px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink);margin-bottom:10px">Learning</div>
             <h3 style="font-weight:700;font-size:18px;margin:0 0 6px">Weekend Coding Bootcamp</h3>
@@ -263,7 +256,7 @@
         </div>
 
         <div style="background:var(--card);border:2.5px solid var(--ink);border-radius:20px;overflow:hidden;box-shadow:6px 6px 0 rgba(28,23,16,0.14)">
-          <div class="imgph" style="height:190px"><div class="emoji">💃</div><div class="lbl">Dance class</div></div>
+          <img src="assets/photos/dance-class.jpg" alt="A dance teacher leading a class of students through a pose in an open hall" loading="lazy" style="width:100%;height:190px;object-fit:cover;display:block;border-bottom:2.5px solid var(--ink)" />
           <div style="padding:20px">
             <div style="display:inline-block;padding:4px 10px;background:var(--accent);border-radius:100px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink);margin-bottom:10px">Movement</div>
             <h3 style="font-weight:700;font-size:18px;margin:0 0 6px">Evening Dance Class</h3>
@@ -272,11 +265,56 @@
         </div>
 
         <div style="background:var(--card);border:2.5px solid var(--ink);border-radius:20px;overflow:hidden;box-shadow:6px 6px 0 rgba(28,23,16,0.14)">
-          <div class="imgph" style="height:190px"><div class="emoji">🧺</div><div class="lbl">Local market</div></div>
+          <img src="assets/photos/study-group.jpg" alt="Students sitting around a low table working through notes together" loading="lazy" style="width:100%;height:190px;object-fit:cover;display:block;border-bottom:2.5px solid var(--ink)" />
           <div style="padding:20px">
-            <div style="display:inline-block;padding:4px 10px;background:var(--accent);border-radius:100px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink);margin-bottom:10px">Community</div>
-            <h3 style="font-weight:700;font-size:18px;margin:0 0 6px">Sunday Local Market</h3>
-            <p style="font-size:13.5px;color:rgba(28,23,16,0.62);margin:0">Neighbours selling, browsing, and catching up.</p>
+            <div style="display:inline-block;padding:4px 10px;background:var(--accent);border-radius:100px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink);margin-bottom:10px">Tuition</div>
+            <h3 style="font-weight:700;font-size:18px;margin:0 0 6px">Evening Study Circle</h3>
+            <p style="font-size:13.5px;color:rgba(28,23,16,0.62);margin:0">Same syllabus, same street. Small batches after school.</p>
+          </div>
+        </div>
+
+        <div style="background:var(--card);border:2.5px solid var(--ink);border-radius:20px;overflow:hidden;box-shadow:6px 6px 0 rgba(28,23,16,0.14)">
+          <img src="assets/photos/football-match.jpg" alt="A player striking the ball during a football match on a neighbourhood ground" loading="lazy" style="width:100%;height:190px;object-fit:cover;display:block;border-bottom:2.5px solid var(--ink)" />
+          <div style="padding:20px">
+            <div style="display:inline-block;padding:4px 10px;background:var(--accent);border-radius:100px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink);margin-bottom:10px">Sport</div>
+            <h3 style="font-weight:700;font-size:18px;margin:0 0 6px">Sunday Football Match</h3>
+            <p style="font-size:13.5px;color:rgba(28,23,16,0.62);margin:0">A proper game on the neighbourhood ground. Turn up solo, leave with a team.</p>
+          </div>
+        </div>
+
+        <div style="background:var(--card);border:2.5px solid var(--ink);border-radius:20px;overflow:hidden;box-shadow:6px 6px 0 rgba(28,23,16,0.14)">
+          <img src="assets/photos/diwali-party.jpg" alt="A group in festive kurtas posing together on the street on Diwali night" loading="lazy" style="width:100%;height:190px;object-fit:cover;display:block;border-bottom:2.5px solid var(--ink)" />
+          <div style="padding:20px">
+            <div style="display:inline-block;padding:4px 10px;background:var(--accent);border-radius:100px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink);margin-bottom:10px">Festival</div>
+            <h3 style="font-weight:700;font-size:18px;margin:0 0 6px">Diwali Party</h3>
+            <p style="font-size:13.5px;color:rgba(28,23,16,0.62);margin:0">Diyas, sweets, and the whole lane out on the street.</p>
+          </div>
+        </div>
+
+        <div style="background:var(--card);border:2.5px solid var(--ink);border-radius:20px;overflow:hidden;box-shadow:6px 6px 0 rgba(28,23,16,0.14)">
+          <img src="assets/photos/holi-party.jpg" alt="A group covered head to toe in pink colour posing together at a Holi celebration" loading="lazy" style="width:100%;height:190px;object-fit:cover;display:block;border-bottom:2.5px solid var(--ink)" />
+          <div style="padding:20px">
+            <div style="display:inline-block;padding:4px 10px;background:var(--accent);border-radius:100px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink);margin-bottom:10px">Festival</div>
+            <h3 style="font-weight:700;font-size:18px;margin:0 0 6px">Holi Party</h3>
+            <p style="font-size:13.5px;color:rgba(28,23,16,0.62);margin:0">Colours, music, and a hose. Bring clothes you'll ruin.</p>
+          </div>
+        </div>
+
+        <div style="background:var(--card);border:2.5px solid var(--ink);border-radius:20px;overflow:hidden;box-shadow:6px 6px 0 rgba(28,23,16,0.14)">
+          <img src="assets/photos/kayaking.jpg" alt="Two kayakers paddling across an open lake under a bright sky" loading="lazy" style="width:100%;height:190px;object-fit:cover;display:block;border-bottom:2.5px solid var(--ink)" />
+          <div style="padding:20px">
+            <div style="display:inline-block;padding:4px 10px;background:var(--accent);border-radius:100px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink);margin-bottom:10px">Outdoors</div>
+            <h3 style="font-weight:700;font-size:18px;margin:0 0 6px">Sunrise Kayaking</h3>
+            <p style="font-size:13.5px;color:rgba(28,23,16,0.62);margin:0">Out on the lake before the city wakes up. No experience needed.</p>
+          </div>
+        </div>
+
+        <div style="background:var(--card);border:2.5px solid var(--ink);border-radius:20px;overflow:hidden;box-shadow:6px 6px 0 rgba(28,23,16,0.14)">
+          <img src="assets/photos/horse-riding.jpg" alt="Two riders on horseback crossing an open ground at dusk, town rooftops behind" loading="lazy" style="width:100%;height:190px;object-fit:cover;display:block;border-bottom:2.5px solid var(--ink)" />
+          <div style="padding:20px">
+            <div style="display:inline-block;padding:4px 10px;background:var(--accent);border-radius:100px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink);margin-bottom:10px">Outdoors</div>
+            <h3 style="font-weight:700;font-size:18px;margin:0 0 6px">Evening Horse Riding</h3>
+            <p style="font-size:13.5px;color:rgba(28,23,16,0.62);margin:0">Golden hour on the ground at the edge of town. Beginners get a calm one.</p>
           </div>
         </div>
 
@@ -344,23 +382,50 @@
           <figcaption style="padding:14px 18px;font-size:13.5px;font-weight:600;color:rgba(28,23,16,0.72)">A stop worth the detour.</figcaption>
         </figure>
         <figure style="margin:0;background:var(--card);border:2.5px solid var(--ink);border-radius:20px;overflow:hidden;box-shadow:6px 6px 0 rgba(28,23,16,0.14)">
-          <img src="assets/photos/community-3.jpg" alt="Riders picking a line down a boulder-lined dirt trail" style="width:100%;height:230px;object-fit:cover;display:block;border-bottom:2.5px solid var(--ink)" />
-          <figcaption style="padding:14px 18px;font-size:13.5px;font-weight:600;color:rgba(28,23,16,0.72)">Neighbours who became a club.</figcaption>
+          <img src="assets/photos/community-3.jpg" alt="A rider demonstrating bike control to a group gathered round at a skills session" style="width:100%;height:230px;object-fit:cover;display:block;border-bottom:2.5px solid var(--ink)" />
+          <figcaption style="padding:14px 18px;font-size:13.5px;font-weight:600;color:rgba(28,23,16,0.72)">Someone in the group always knows how.</figcaption>
+        </figure>
+        <figure style="margin:0;background:var(--card);border:2.5px solid var(--ink);border-radius:20px;overflow:hidden;box-shadow:6px 6px 0 rgba(28,23,16,0.14)">
+          <img src="assets/photos/community-4.jpg" alt="Friends out on rented e-bikes, stopped along a tree-lined city street" loading="lazy" style="width:100%;height:230px;object-fit:cover;display:block;border-bottom:2.5px solid var(--ink)" />
+          <figcaption style="padding:14px 18px;font-size:13.5px;font-weight:600;color:rgba(28,23,16,0.72)">A weekday evening, no plan required.</figcaption>
         </figure>
       </div>
     </div>
   </section>
 
-  <!-- ===================== FOUNDER ===================== -->
-  <section id="founder" style="padding:96px clamp(20px,5vw,64px);background:var(--paper)">
-    <div style="max-width:900px;margin:0 auto;display:flex;gap:44px;flex-wrap:wrap;align-items:center">
-      <div style="flex:0 0 auto">
-        <img src="assets/photos/team.jpg" alt="The Ilaka founding team out with friends in Sainikpuri, Hyderabad" style="width:clamp(240px,34vw,300px);aspect-ratio:4/3;object-fit:cover;border-radius:20px;border:2.5px solid var(--ink);display:block;box-shadow:6px 6px 0 rgba(28,23,16,0.18)" />
-      </div>
-      <div style="flex:1 1 380px;min-width:260px">
+  <!-- ===================== FOUNDERS ===================== -->
+  <section id="founders" style="padding:96px clamp(20px,5vw,64px);background:var(--paper)">
+    <div style="max-width:1000px;margin:0 auto">
+      <div style="max-width:680px;margin-bottom:44px">
         <div style="font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:14px">Why we're building this</div>
-        <p style="font-style:italic;font-weight:500;font-size:22px;line-height:1.55;margin:0 0 18px">"We kept missing out on things happening two streets away — a run club, a pottery workshop, a tuition class that would've been perfect. Ilaka started as a fix for our own neighbourhood, and it's built to work for yours next."</p>
-        <div style="font-weight:700">— Team Ilaka, Sainikpuri</div>
+        <h2 style="font-weight:800;font-size:clamp(28px,3.6vw,44px);line-height:1.1">Meet the founders.</h2>
+        <p style="font-style:italic;font-weight:500;font-size:20px;line-height:1.55;margin:20px 0 0">"We kept missing out on things happening two streets away &mdash; a run club, a pottery workshop, a tuition class that would've been perfect. Ilaka started as a fix for our own neighbourhood, and it's built to work for yours next."</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:26px">
+        <figure style="margin:0;background:var(--card);border:2.5px solid var(--ink);border-radius:20px;overflow:hidden;box-shadow:6px 6px 0 rgba(28,23,16,0.14)">
+          <img src="assets/photos/founder-ambarish.jpg" alt="Ambarish Iyengar, founder and CEO of Ilaka, grinning next to someone in a tiger costume at a local festival" style="width:100%;aspect-ratio:4/5;object-fit:cover;display:block;border-bottom:2.5px solid var(--ink)" />
+          <figcaption style="padding:18px 20px">
+            <h3 style="font-weight:700;font-size:18px;margin:0 0 4px">Ambarish Iyengar</h3>
+            <div style="font-size:12.5px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);margin-bottom:10px">Founder &amp; CEO</div>
+            <p style="font-size:13.5px;line-height:1.55;color:rgba(28,23,16,0.62);margin:0">I built the thing. Now I’m pretending I know what I’m doing.</p>
+          </figcaption>
+        </figure>
+        <figure style="margin:0;background:var(--card);border:2.5px solid var(--ink);border-radius:20px;overflow:hidden;box-shadow:6px 6px 0 rgba(28,23,16,0.14)">
+          <img src="assets/photos/founder-gagan.jpg" alt="Gagan Sagar, founder of Ilaka" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;display:block;border-bottom:2.5px solid var(--ink)" />
+          <figcaption style="padding:18px 20px">
+            <h3 style="font-weight:700;font-size:18px;margin:0 0 4px">Gagan Sagar</h3>
+            <div style="font-size:12.5px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);margin-bottom:10px">Founder</div>
+            <p style="font-size:13.5px;line-height:1.55;color:rgba(28,23,16,0.62);margin:0">10% strategy, 90% “let’s see what happens.”</p>
+          </figcaption>
+        </figure>
+        <figure style="margin:0;background:var(--card);border:2.5px solid var(--ink);border-radius:20px;overflow:hidden;box-shadow:6px 6px 0 rgba(28,23,16,0.14)">
+          <img src="assets/photos/founder-ankush.jpg" alt="Ankush Mahanty, founder of Ilaka" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;display:block;border-bottom:2.5px solid var(--ink)" />
+          <figcaption style="padding:18px 20px">
+            <h3 style="font-weight:700;font-size:18px;margin:0 0 4px">Ankush Mahanty</h3>
+            <div style="font-size:12.5px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);margin-bottom:10px">Founder</div>
+            <p style="font-size:13.5px;line-height:1.55;color:rgba(28,23,16,0.62);margin:0">Turning caffeine, chaos, and questionable ideas into companies. ☕</p>
+          </figcaption>
+        </figure>
       </div>
     </div>
   </section>
@@ -598,7 +663,7 @@
   });
 
   // build the category marquee (two identical sets for a seamless loop)
-  var CATS = ["Yoga","Run Clubs","Pottery","Coding Bootcamps","Dance","Baking Workshops","Guitar Lessons","Tuition Classes","Book Clubs"];
+  var CATS = ["Yoga","Run Clubs","Pottery","Coding Bootcamps","Dance","Turf Football","Kayaking","Horse Riding","Festival Parties","Baking Workshops","Guitar Lessons","Tuition Classes","Book Clubs"];
   document.querySelectorAll(".marquee-set").forEach(function(set){
     CATS.forEach(function(c){
       var label = document.createElement("span");
