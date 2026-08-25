@@ -1,0 +1,7 @@
+# Ilaka — hyperlocal community, events & classes.
+# Sainikpuri, Hyderabad. https://www.ilaka.co.in
+
+User-agent: *
+Allow: /
+
+Sitemap: https://www.ilaka.co.in/sitemap.xml
