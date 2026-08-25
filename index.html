@@ -533,11 +533,19 @@
   var WAITLIST_ENDPOINT = "https://backend-production-dfd0.up.railway.app/api/v1/waitlist";
   var SUPPORT_EMAIL = "support@ilaka.co.in";
 
-  var state = { role: "business", email: "", submitted: false };
+  var state = { role: "business", email: "", submitted: false, duplicate: false };
 
   var SUCCESS = {
     business: "You're on the list! We'll reach out about early organiser access.",
     participant: "You're on the list! We'll ping you the moment Ilaka goes live near you."
+  };
+
+  /* Shown when the backend reports the address was already stored, so a second
+     submission reads as recognition rather than a duplicate thank-you. Same
+     tail as SUCCESS — the promise doesn't change, only the greeting. */
+  var DUPLICATE = {
+    business: "We know, we know \u2014 you're already on the list. Sit tight, we'll reach out about early organiser access.",
+    participant: "We know, we know \u2014 you're already on the list. Sit tight, we'll ping you the moment Ilaka goes live near you."
   };
   var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   var EMAIL_MAX_LEN = 254; // RFC 5321 4.5.3.1.3
@@ -550,8 +558,15 @@
     });
     blocks.forEach(function(b){
       var s = b.querySelector(".wl-success");
-      if (s) s.textContent = SUCCESS[state.role];
+      if (s) s.textContent = messageForRole();
     });
+  }
+
+  // The role toggle stays clickable after submitting, so the shown message has
+  // to keep tracking the role — without reverting a "already on the list" into
+  // a fresh thank-you.
+  function messageForRole(){
+    return (state.duplicate ? DUPLICATE : SUCCESS)[state.role];
   }
 
   function setRole(role){
@@ -560,15 +575,16 @@
     applyRole();
   }
 
-  function showSuccess(){
+  function showSuccess(alreadyOnList){
     state.submitted = true;
+    state.duplicate = !!alreadyOnList;
     blocks.forEach(function(b){
       var form = b.querySelector(".wl-form");
       var err  = b.querySelector(".wl-error");
       var succ = b.querySelector(".wl-success");
       if (err){ err.hidden = true; err.textContent = ""; }
       if (form) form.hidden = true;
-      if (succ){ succ.textContent = SUCCESS[state.role]; succ.hidden = false; }
+      if (succ){ succ.textContent = messageForRole(); succ.hidden = false; }
     });
   }
 
@@ -580,15 +596,24 @@
     } catch(e){ /* storage unavailable — ignore */ }
   }
 
-  // Resolves true only when the backend actually accepted the signup.
+  /* Resolves { ok, alreadyOnList }. `ok` is true only when the backend actually
+     accepted the signup; `alreadyOnList` is the backend's report that this
+     address was already stored (a duplicate is still a 2xx — nothing went
+     wrong). An unreadable or older response body just means no duplicate
+     flag, which degrades to the ordinary success message. */
   function persist(email){
     backup(email);
-    if (!WAITLIST_ENDPOINT) return Promise.resolve(false);
+    if (!WAITLIST_ENDPOINT) return Promise.resolve({ ok: false, alreadyOnList: false });
     return fetch(WAITLIST_ENDPOINT, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email: email, role: state.role })
-    }).then(function(r){ return r.ok; }).catch(function(){ return false; });
+    }).then(function(r){
+      if (!r.ok) return { ok: false, alreadyOnList: false };
+      return r.json().then(function(body){
+        return { ok: true, alreadyOnList: !!(body && body.alreadyOnList) };
+      }).catch(function(){ return { ok: true, alreadyOnList: false }; });
+    }).catch(function(){ return { ok: false, alreadyOnList: false }; });
   }
 
   // role toggle buttons (in both waitlist blocks)
@@ -627,9 +652,9 @@
         state.email = email;
         var btn = form.querySelector("button[type=submit]");
         if (btn){ btn.disabled = true; btn.textContent = "Joining…"; }
-        persist(email).then(function(ok){
+        persist(email).then(function(res){
           if (btn){ btn.disabled = false; btn.textContent = "Join the waitlist"; }
-          if (ok){ showSuccess(); return; }
+          if (res.ok){ showSuccess(res.alreadyOnList); return; }
           // Never claim a signup we could not record.
           if (err){
             err.innerHTML = "Couldn’t reach our server. Email <a href=\"mailto:" +
