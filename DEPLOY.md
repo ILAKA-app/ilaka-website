@@ -64,7 +64,7 @@ Verify:
 
 ```bash
 curl -sI https://www.ilaka.co.in/ | grep -i last-modified
-curl -so /dev/null -w '%{http_code}\n' https://www.ilaka.co.in/assets/photos/hero.jpg
+curl -so /dev/null -w '%{http_code}\n' https://www.ilaka.co.in/assets/creatives/ilaka-poster-3.webp
 ```
 
 `last-modified` should be today, and the image should return **200** (it is
