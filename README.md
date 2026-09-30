@@ -22,6 +22,7 @@ Two layers live here:
 | `refunds.html` | Refund & Cancellation Policy |
 | `contact.html` | Contact Us |
 | `shipping.html` | Shipping Policy (digital goods only) |
+| `event.html` | Public listing page, served at `/e/:id` via the `vercel.json` rewrite. Fetches `GET /api/v1/listings/:id` client-side and shows the photo, title, next dates, locality, organiser and a Free/price badge, with "Open in ILAKA" (`ilaka://listings/:id`) and "Get the app" (`/app`) buttons. |
 
 ## Waitlist
 
