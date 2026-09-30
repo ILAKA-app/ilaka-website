@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Event — Ilaka</title>
+<meta name="description" content="A free event or class near you, on Ilaka — Sainikpuri, Hyderabad.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="theme-color" content="#FBF2E4">
+<link rel="apple-touch-icon" href="assets/ilaka-icon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ilaka">
+<meta property="og:locale" content="en_IN">
+<meta property="og:title" content="Event — Ilaka">
+<meta property="og:description" content="A free event or class near you, on Ilaka — Sainikpuri, Hyderabad.">
+<meta property="og:image" content="https://www.ilaka.co.in/assets/photos/community-2.jpg">
+<meta property="og:image:width" content="800">
+<meta property="og:image:height" content="450">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Event — Ilaka">
+<meta name="twitter:description" content="A free event or class near you, on Ilaka — Sainikpuri, Hyderabad.">
+<meta name="twitter:image" content="https://www.ilaka.co.in/assets/photos/community-2.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="assets/ilaka-icon.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="index.html">ilaka<span>.</span></a>
+    <nav class="main">
+      <a href="index.html">Home</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="terms.html">Terms</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="refunds.html">Refunds</a>
+      <a href="contact.html">Contact</a>
+      <a class="nav-cta" href="index.html#join">Join waitlist</a>
+    </nav>
+  </div>
+</header>
+
+<main class="event-main">
+  <div class="wrap" style="max-width: 640px;">
+    <div id="event-root">
+      <div class="event-state" id="event-loading">
+        <p>Loading event…</p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="foot-wordmark" href="index.html">ilaka<span>.</span></a>
+        Hyperlocal community, events &amp; classes — starting in Sainikpuri, Hyderabad.
+      </div>
+      <div class="foot-links">
+        <div class="foot-col-title">Legal</div>
+        <a href="terms.html">Terms &amp; Conditions</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="refunds.html">Refund &amp; Cancellation</a>
+        <a href="shipping.html">Shipping Policy</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="delete-account.html">Delete Account</a>
+      </div>
+      <div class="foot-links">
+        <div class="foot-col-title">Connect</div>
+        <a href="contact.html">Contact us</a>
+        <a href="mailto:support@ilaka.co.in">support@ilaka.co.in</a>
+        <a href="https://www.instagram.com/ilakaofficial/" target="_blank" rel="me noopener">Instagram</a>
+        <a href="https://www.linkedin.com/company/ilaka/" target="_blank" rel="me noopener">LinkedIn</a>
+        <span style="font-size:0.87rem">Sainikpuri, Hyderabad</span>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; 2026 Ilaka. All rights reserved. Ilaka (Private Limited Company, incorporation pending) — Hyderabad, Telangana, India.</span>
+      <span>Made in Sainikpuri, Hyderabad.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  // /e/:id is served by this file via a Vercel rewrite (see vercel.json), so
+  // the browser's address bar — not any query string — carries the id.
+  // ?id=... is kept as a fallback for local preview without Vercel rewrites.
+  function getListingId() {
+    var m = window.location.pathname.match(/\/e\/([^\/?#]+)/);
+    if (m) return decodeURIComponent(m[1]);
+    var params = new URLSearchParams(window.location.search);
+    return params.get("id") || "";
+  }
+
+  var API_BASE = "https://api.ilaka.co.in/api/v1";
+  var FALLBACK_IMAGE = "assets/photos/community-2.jpg";
+  var UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
+  var root = document.getElementById("event-root");
+
+  function esc(s) {
+    var div = document.createElement("div");
+    div.textContent = s == null ? "" : String(s);
+    return div.innerHTML;
+  }
+
+  function formatDate(iso) {
+    try {
+      return new Intl.DateTimeFormat("en-IN", {
+        timeZone: "Asia/Kolkata",
+        weekday: "short",
+        day: "numeric",
+        month: "short",
+        hour: "numeric",
+        minute: "2-digit",
+      }).format(new Date(iso));
+    } catch (e) {
+      return iso;
+    }
+  }
+
+  function renderState(title, body) {
+    root.innerHTML =
+      '<div class="event-state"><h2>' + esc(title) + "</h2><p>" + body + "</p>" +
+      '<p><a class="btn btn-secondary" href="index.html">Back to Ilaka</a></p></div>';
+  }
+
+  function renderNotFound() {
+    renderState(
+      "This one's gone",
+      "This may have ended, been removed, or the link is off. Check the app for what's on nearby."
+    );
+  }
+
+  function renderError() {
+    renderState(
+      "Couldn't load this event",
+      'Something went wrong on our end. <a href="javascript:location.reload()">Try again</a>, or open it in the app once it\'s out.'
+    );
+  }
+
+  function renderCommunity(id, community) {
+    document.title = community.name + " — Ilaka";
+
+    var photoUrl = community.banner_medium_url || FALLBACK_IMAGE;
+
+    var metaRows = [];
+    metaRows.push(
+      "<div>👥 <strong>" + esc(community.member_count) + " member" +
+      (community.member_count === 1 ? "" : "s") + "</strong></div>"
+    );
+    if (community.locality) {
+      metaRows.push("<div>📍 " + esc(community.locality.name) + "</div>");
+    }
+    if (community.organiser) {
+      metaRows.push("<div>🎟️ Hosted by <strong>" + esc(community.organiser.display_name) + "</strong></div>");
+    }
+
+    var description = community.description
+      ? '<p style="color: var(--ink); margin: 0 0 20px;">' + esc(community.description) + "</p>"
+      : "";
+
+    root.innerHTML =
+      '<div class="event-card">' +
+      '<div class="event-photo-wrap"><img src="' + esc(photoUrl) + '" alt="' + esc(community.name) + '" loading="eager"></div>' +
+      '<div class="event-body">' +
+      '<h1 class="event-title">' + esc(community.name) + "</h1>" +
+      '<div class="event-meta">' + metaRows.join("") + "</div>" +
+      description +
+      '<div class="event-actions">' +
+      '<a class="btn btn-primary" id="open-in-app" href="ilaka://communities/' + esc(id) + '">Open in ILAKA</a>' +
+      '<a class="btn btn-secondary" href="/app">Get the app</a>' +
+      "</div>" +
+      "</div>" +
+      "</div>";
+  }
+
+  function renderListing(id, listing) {
+    document.title = listing.title + " — Ilaka";
+
+    var photoUrl =
+      listing.images && listing.images.length ? listing.images[0].url : FALLBACK_IMAGE;
+
+    var isFree = Number(listing.price_paise) === 0;
+    var priceBadge = isFree
+      ? '<span class="badge badge-free">Free</span>'
+      : '<span class="badge badge-paid">₹' + (Number(listing.price_paise) / 100).toFixed(0) + "</span>";
+
+    var occurrences = listing.occurrences || [];
+    var dateLine = "Dates coming soon";
+    if (occurrences.length === 1) {
+      dateLine = formatDate(occurrences[0].starts_at);
+    } else if (occurrences.length > 1) {
+      dateLine =
+        formatDate(occurrences[0].starts_at) + " · +" + (occurrences.length - 1) + " more date" +
+        (occurrences.length - 1 === 1 ? "" : "s");
+    }
+
+    var metaRows = [];
+    metaRows.push("<div>📅 <strong>" + esc(dateLine) + "</strong></div>");
+    if (listing.locality) {
+      metaRows.push("<div>📍 " + esc(listing.locality.name) + "</div>");
+    }
+    if (listing.organiser) {
+      metaRows.push("<div>🎟️ Hosted by <strong>" + esc(listing.organiser.display_name) + "</strong></div>");
+    }
+
+    var description = listing.description
+      ? '<p style="color: var(--ink); margin: 0 0 20px;">' + esc(listing.description) + "</p>"
+      : "";
+
+    root.innerHTML =
+      '<div class="event-card">' +
+      '<div class="event-photo-wrap"><img src="' + esc(photoUrl) + '" alt="' + esc(listing.title) + '" loading="eager"></div>' +
+      '<div class="event-body">' +
+      '<div class="event-badges">' + priceBadge + "</div>" +
+      '<h1 class="event-title">' + esc(listing.title) + "</h1>" +
+      '<div class="event-meta">' + metaRows.join("") + "</div>" +
+      description +
+      '<div class="event-actions">' +
+      '<a class="btn btn-primary" id="open-in-app" href="ilaka://listings/' + esc(id) + '">Open in ILAKA</a>' +
+      '<a class="btn btn-secondary" href="/app">Get the app</a>' +
+      "</div>" +
+      "</div>" +
+      "</div>";
+  }
+
+  // A shared /e/:id can point at a listing or, from Community Profile's
+  // Share button (M6), a community — same URL shape, no way to tell from
+  // the id alone. Try listings first (the common case), fall back to
+  // communities on a 404 before giving up.
+  function fetchJson(path) {
+    return fetch(API_BASE + path, { headers: { Accept: "application/json" } }).then(function (res) {
+      if (res.status === 404) return null;
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      return res.json();
+    });
+  }
+
+  function main() {
+    var id = getListingId();
+    if (!id || !UUID_RE.test(id)) {
+      renderNotFound();
+      return;
+    }
+
+    fetchJson("/listings/" + encodeURIComponent(id))
+      .then(function (listing) {
+        if (listing) {
+          renderListing(id, listing);
+          return;
+        }
+        return fetchJson("/communities/" + encodeURIComponent(id)).then(function (community) {
+          if (community) renderCommunity(id, community);
+          else renderNotFound();
+        });
+      })
+      .catch(function () {
+        renderError();
+      });
+  }
+
+  main();
+})();
+</script>
+
+</body>
+</html>
