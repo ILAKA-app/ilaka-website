@@ -136,7 +136,7 @@
   function renderNotFound() {
     renderState(
       "This one's gone",
-      "This listing may have ended, been removed, or the link is off. Check the app for what's on nearby."
+      "This may have ended, been removed, or the link is off. Check the app for what's on nearby."
     );
   }
 
@@ -145,6 +145,42 @@
       "Couldn't load this event",
       'Something went wrong on our end. <a href="javascript:location.reload()">Try again</a>, or open it in the app once it\'s out.'
     );
+  }
+
+  function renderCommunity(id, community) {
+    document.title = community.name + " — Ilaka";
+
+    var photoUrl = community.banner_medium_url || FALLBACK_IMAGE;
+
+    var metaRows = [];
+    metaRows.push(
+      "<div>👥 <strong>" + esc(community.member_count) + " member" +
+      (community.member_count === 1 ? "" : "s") + "</strong></div>"
+    );
+    if (community.locality) {
+      metaRows.push("<div>📍 " + esc(community.locality.name) + "</div>");
+    }
+    if (community.organiser) {
+      metaRows.push("<div>🎟️ Hosted by <strong>" + esc(community.organiser.display_name) + "</strong></div>");
+    }
+
+    var description = community.description
+      ? '<p style="color: var(--ink); margin: 0 0 20px;">' + esc(community.description) + "</p>"
+      : "";
+
+    root.innerHTML =
+      '<div class="event-card">' +
+      '<div class="event-photo-wrap"><img src="' + esc(photoUrl) + '" alt="' + esc(community.name) + '" loading="eager"></div>' +
+      '<div class="event-body">' +
+      '<h1 class="event-title">' + esc(community.name) + "</h1>" +
+      '<div class="event-meta">' + metaRows.join("") + "</div>" +
+      description +
+      '<div class="event-actions">' +
+      '<a class="btn btn-primary" id="open-in-app" href="ilaka://communities/' + esc(id) + '">Open in ILAKA</a>' +
+      '<a class="btn btn-secondary" href="/app">Get the app</a>' +
+      "</div>" +
+      "</div>" +
+      "</div>";
   }
 
   function renderListing(id, listing) {
@@ -197,6 +233,18 @@
       "</div>";
   }
 
+  // A shared /e/:id can point at a listing or, from Community Profile's
+  // Share button (M6), a community — same URL shape, no way to tell from
+  // the id alone. Try listings first (the common case), fall back to
+  // communities on a 404 before giving up.
+  function fetchJson(path) {
+    return fetch(API_BASE + path, { headers: { Accept: "application/json" } }).then(function (res) {
+      if (res.status === 404) return null;
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      return res.json();
+    });
+  }
+
   function main() {
     var id = getListingId();
     if (!id || !UUID_RE.test(id)) {
@@ -204,17 +252,16 @@
       return;
     }
 
-    fetch(API_BASE + "/listings/" + encodeURIComponent(id), { headers: { Accept: "application/json" } })
-      .then(function (res) {
-        if (res.status === 404) {
-          renderNotFound();
-          return null;
-        }
-        if (!res.ok) throw new Error("HTTP " + res.status);
-        return res.json();
-      })
+    fetchJson("/listings/" + encodeURIComponent(id))
       .then(function (listing) {
-        if (listing) renderListing(id, listing);
+        if (listing) {
+          renderListing(id, listing);
+          return;
+        }
+        return fetchJson("/communities/" + encodeURIComponent(id)).then(function (community) {
+          if (community) renderCommunity(id, community);
+          else renderNotFound();
+        });
       })
       .catch(function () {
         renderError();
