@@ -4,10 +4,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Local Events, Classes &amp; Things to Do in Sainikpuri | Ilaka</title>
-  <meta name="description" content="Find yoga, run clubs, workshops, tuitions and community events minutes from home in Sainikpuri, Hyderabad. Register in a tap. Join the Ilaka beta waitlist." />
+  <meta name="description" content="Find yoga, run clubs, workshops, tuitions and community events minutes from home in Sainikpuri, Hyderabad. Register free. Show your ticket at the door. Join the Ilaka beta waitlist." />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
   <link rel="canonical" href="https://www.ilaka.co.in/" />
-  <meta name="theme-color" content="#FBF2E4" />
+  <meta name="theme-color" content="#1C1710" />
   <link rel="icon" type="image/png" href="assets/ilaka-icon.png" />
   <link rel="apple-touch-icon" href="assets/ilaka-icon.png" />
 
@@ -16,83 +16,296 @@
   <meta property="og:locale" content="en_IN" />
   <meta property="og:url" content="https://www.ilaka.co.in/" />
   <meta property="og:title" content="Local Events, Classes &amp; Things to Do in Sainikpuri | Ilaka" />
-  <meta property="og:description" content="Find yoga, run clubs, workshops, tuitions and community events minutes from home in Sainikpuri, Hyderabad. Register in a tap. Join the Ilaka beta waitlist." />
+  <meta property="og:description" content="Find yoga, run clubs, workshops, tuitions and community events minutes from home in Sainikpuri, Hyderabad. Register free. Show your ticket at the door. Join the Ilaka beta waitlist." />
   <meta property="og:image" content="https://www.ilaka.co.in/assets/photos/community-2.jpg" />
   <meta property="og:image:width" content="800" />
   <meta property="og:image:height" content="450" />
   <meta property="og:image:alt" content="Riders and adventure motorcycles on a rocky plateau under a wide sky" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Local Events, Classes &amp; Things to Do in Sainikpuri | Ilaka" />
-  <meta name="twitter:description" content="Find yoga, run clubs, workshops, tuitions and community events minutes from home in Sainikpuri, Hyderabad. Register in a tap. Join the Ilaka beta waitlist." />
+  <meta name="twitter:description" content="Find yoga, run clubs, workshops, tuitions and community events minutes from home in Sainikpuri, Hyderabad. Register free. Show your ticket at the door. Join the Ilaka beta waitlist." />
   <meta name="twitter:image" content="https://www.ilaka.co.in/assets/photos/community-2.jpg" />
 
-  <link rel="preload" as="image" href="assets/creatives/ilaka-poster-3.webp" fetchpriority="high" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet" />
+  <!-- Brand fonts are self-hosted (SIL OFL 1.1, licences in assets/fonts/), latin subset only. -->
+  <link rel="preload" href="assets/fonts/bricolage-grotesque-opsz.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+  <link rel="preload" href="assets/fonts/plus-jakarta-sans-500.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
 
   <style>
   /* ============================================================
-     ILAKA — pre-launch landing. Neo-brutalist warm-cream system,
-     implemented from the "Ilaka Landing" Claude Design component.
-     Palette:  paper #FBF2E4 · ink #1C1710 · card #FFFBF3
-               accent #FF7A1F · error #E63B60
-     Type:     Bricolage Grotesque (display) · Plus Jakarta Sans (body)
+     ILAKA landing. The opening is the "problem" story from the
+     Instagram launch kit (post 3), rebuilt as live HTML.
+     Palette:  paper #FBF2E4 · stock #FFFBF3 · ink #1C1710
+               marigold #FF7A1F (the only accent) · error #E63B60
+     Type:     Bricolage Grotesque 800 (display) · Plus Jakarta Sans (body)
+               Darker Grotesque 900 (ticket lettering only)
      ============================================================ */
+  @font-face{font-family:'Bricolage Grotesque';src:url(assets/fonts/bricolage-grotesque-opsz.woff2) format('woff2');font-weight:200 800;font-style:normal;font-display:swap}
+  @font-face{font-family:'Plus Jakarta Sans';src:url(assets/fonts/plus-jakarta-sans-400.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap}
+  @font-face{font-family:'Plus Jakarta Sans';src:url(assets/fonts/plus-jakarta-sans-500.woff2) format('woff2');font-weight:500;font-style:normal;font-display:swap}
+  @font-face{font-family:'Plus Jakarta Sans';src:url(assets/fonts/plus-jakarta-sans-600.woff2) format('woff2');font-weight:600;font-style:normal;font-display:swap}
+  @font-face{font-family:'Plus Jakarta Sans';src:url(assets/fonts/plus-jakarta-sans-700.woff2) format('woff2');font-weight:700;font-style:normal;font-display:swap}
+  @font-face{font-family:'Plus Jakarta Sans';src:url(assets/fonts/plus-jakarta-sans-800.woff2) format('woff2');font-weight:800;font-style:normal;font-display:swap}
+  @font-face{font-family:'Plus Jakarta Sans';src:url(assets/fonts/plus-jakarta-sans-500-italic.woff2) format('woff2');font-weight:500;font-style:italic;font-display:swap}
+  @font-face{font-family:'Darker Grotesque';src:url(assets/fonts/darker-grotesque-900.woff2) format('woff2');font-weight:900;font-style:normal;font-display:swap}
+
   :root{
-    --paper:#FBF2E4; --ink:#1C1710; --card:#FFFBF3;
-    --accent:#FF7A1F; --err:#E63B60;
+    --paper:#FBF2E4; --card:#FFFBF3; --ink:#1C1710; --accent:#FF7A1F;
+    --accent-dark:#B24A00; --on-accent:#7A2E00; --err:#E63B60;
+    --ink-75:rgba(28,23,16,.75); --ink-68:rgba(28,23,16,.68); --ink-62:rgba(28,23,16,.62);
+    --paper-82:rgba(251,242,228,.82); --paper-72:rgba(251,242,228,.72); --paper-60:rgba(251,242,228,.6);
+    --display:'Bricolage Grotesque',system-ui,sans-serif;
+    --body:'Plus Jakarta Sans',system-ui,sans-serif;
+    --stock:'Darker Grotesque',system-ui,sans-serif;
+    --gut:clamp(20px,5vw,64px);
   }
   *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{margin:0;background:var(--paper);color:var(--ink);
-       font-family:'Plus Jakarta Sans',sans-serif;-webkit-font-smoothing:antialiased}
+  html{scroll-behavior:smooth;overflow-x:clip}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);-webkit-font-smoothing:antialiased;overflow-x:clip}
+  main,footer{overflow-x:clip}
   a{color:inherit;text-decoration:none}
-  a:hover{color:var(--ink)}
-  button{font-family:'Plus Jakarta Sans',sans-serif}
-  h1,h2,h3,h4{font-family:'Bricolage Grotesque',sans-serif;margin:0}
+  button{font-family:var(--body)}
+  h1,h2,h3,h4{font-family:var(--display);font-weight:800;font-variation-settings:'opsz' 72;letter-spacing:-0.02em;margin:0}
+  p{margin:0}
   img,svg{max-width:100%}
-  section{scroll-margin-top:84px}
+  section{scroll-margin-top:76px}
+  [hidden]{display:none !important}
+  :focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+  .wrap{max-width:1240px;margin:0 auto}
+  .skip{position:absolute;left:-9999px;top:8px;z-index:100;background:var(--accent);color:var(--ink);padding:10px 16px;border:2.5px solid var(--ink);border-radius:100px;font-weight:700}
+  .skip:focus{left:12px}
 
-  /* hover "pop" for brutalist buttons */
-  .pop{transition:transform .15s ease, box-shadow .15s ease}
-  .sh-ink-sm{box-shadow:3px 3px 0 var(--ink)}
-  .sh-ink-sm:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--ink)}
-  .sh-ink{box-shadow:4px 4px 0 var(--ink)}
-  .sh-ink:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
-  .sh-paper{box-shadow:4px 4px 0 var(--paper)}
-  .sh-paper:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--paper)}
-  .fade{transition:opacity .15s ease}
-  .fade:hover{opacity:.85}
+  /* grounds + the one texture: an ink dot grid */
+  .g-paper{background-color:var(--paper);background-image:radial-gradient(rgba(28,23,16,.09) 1.6px,transparent 1.6px);background-size:24px 24px}
+  .g-ink{background:var(--ink);color:var(--paper)}
+  .g-ink.dots{background-image:radial-gradient(rgba(251,242,228,.07) 1.6px,transparent 1.6px);background-size:24px 24px}
+  .g-accent{background-color:var(--accent);background-image:radial-gradient(rgba(28,23,16,.12) 1.8px,transparent 1.8px);background-size:26px 26px}
 
-  /* role toggle */
-  .role-btn{padding:10px 16px;border-radius:100px;cursor:pointer;font-size:14px;
-    background:var(--card);color:var(--ink);border:2.5px solid rgba(28,23,16,0.25);
+  /* type pieces */
+  .kicker{display:inline-flex;align-items:center;gap:10px;font:800 13px/1.2 var(--body);letter-spacing:.14em;text-transform:uppercase}
+  .kicker::before{content:"";width:11px;height:11px;border-radius:50%;background:var(--accent);border:2.5px solid currentColor;flex:none}
+  .g-ink .kicker{color:var(--accent)}
+  .g-ink .kicker::before{border-color:var(--accent)}
+  .serial{font:900 19px/1 var(--stock);letter-spacing:.08em;color:var(--ink-62)}
+  .g-ink .serial{color:var(--paper-60)}
+  .lead{font:500 clamp(17px,1.6vw,20px)/1.55 var(--body);color:var(--ink-75);max-width:540px}
+  .g-ink .lead{color:var(--paper-72)}
+  .muted{color:var(--ink-68)}
+  .g-ink .muted{color:var(--paper-60)}
+
+  /* wordmark: ilaka + the punched ring */
+  .wm{font-family:var(--display);font-weight:800;font-variation-settings:'opsz' 96;letter-spacing:-0.02em;line-height:1;white-space:nowrap}
+  .wm .ring{display:inline-block;width:.38em;height:.38em;margin-left:.08em;border-radius:50%;border:.04em solid currentColor;vertical-align:baseline;
+    background:radial-gradient(circle,var(--hole,var(--paper)) 0 .07em,var(--accent) calc(.07em + .5px))}
+  .g-ink .wm .ring,.on-ink .wm .ring{--hole:var(--ink)}
+
+  /* buttons: pills, ink border, hard shadow, the hover pop */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 24px;border:2.5px solid var(--ink);border-radius:100px;
+    font:800 16px/1 var(--display);font-variation-settings:'opsz' 24;letter-spacing:0;cursor:pointer;white-space:nowrap;
+    transition:transform .15s ease,box-shadow .15s ease}
+  .btn.accent{background:var(--accent);color:var(--ink);box-shadow:4px 4px 0 var(--ink)}
+  .btn.accent:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+  .g-ink .btn.accent,.on-ink .btn.accent{box-shadow:4px 4px 0 var(--paper)}
+  .g-ink .btn.accent:hover,.on-ink .btn.accent:hover{box-shadow:6px 6px 0 var(--paper)}
+  .btn.ghost{background:transparent;color:inherit;border-color:currentColor}
+  .btn.ghost:hover{background:rgba(251,242,228,.08)}
+  .btn.ink{background:var(--ink);color:var(--paper);box-shadow:4px 4px 0 var(--card)}
+  .btn.ink:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--card)}
+
+  /* ---------- nav ---------- */
+  .nav{position:sticky;top:0;z-index:50;background:rgba(28,23,16,.94);backdrop-filter:blur(8px);color:var(--paper);border-bottom:2.5px solid var(--ink)}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px var(--gut)}
+  .nav .wm{font-size:26px;--hole:var(--ink)}
+  .nav .links{display:flex;align-items:center;gap:28px}
+  .nav .links a:not(.btn){font-size:14.5px;font-weight:600;color:var(--paper-82)}
+  .nav .links a:not(.btn):hover{color:var(--accent)}
+  .nav .btn{padding:10px 18px;font-size:14.5px}
+  @media (max-width:820px){ .nav .links a:not(.btn){display:none} }
+
+  /* ---------- slips: a message on paper, not a chat UI ---------- */
+  .slip{background:var(--card);color:var(--ink);border:2.5px solid var(--ink);border-radius:12px;padding:.55em .85em .65em;box-shadow:.32em .32em 0 var(--paper);
+    font:700 1em/1.2 var(--body);white-space:nowrap;list-style:none}
+  .slip small{display:block;font:800 .58em/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-62);margin-bottom:.5em}
+  .slip.accent{background:var(--accent)}
+  .slip.accent small{color:var(--on-accent)}
+  .g-paper .slip{box-shadow:.28em .28em 0 var(--ink)}
+
+  /* ---------- 1/4 hero: forty WhatsApp groups ---------- */
+  .hero{position:relative;overflow:hidden;padding:clamp(40px,6vw,88px) var(--gut) clamp(48px,6vw,96px)}
+  .hero .wrap{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:center}
+  .hero h1{font-size:clamp(44px,5.8vw,84px);line-height:.95;margin:22px 0 24px;color:var(--paper)}
+  .hero .ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px}
+  .hero .note{margin-top:20px;font:600 14px/1.4 var(--body);color:var(--paper-60)}
+  .pile{position:relative;container-type:inline-size;width:100%;max-width:620px;aspect-ratio:1/1;margin:0 0 0 auto;padding:0}
+  .pile .slip{position:absolute;left:var(--x);top:var(--y);transform:rotate(var(--r));font-size:max(13px,3.5cqw);
+    animation:drop .55s cubic-bezier(.2,.9,.25,1.15) both;animation-delay:calc(var(--i) * 85ms + 150ms)}
+  @keyframes drop{from{opacity:0;transform:translateY(-36px) rotate(calc(var(--r) - 8deg))}to{opacity:1;transform:rotate(var(--r))}}
+
+  /* ---------- 2/4 – 4/4: the rest of the story ---------- */
+  .story .panel{padding:clamp(56px,8vw,112px) var(--gut);border-top:2.5px solid var(--ink)}
+  .story .panel .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(28px,5vw,80px);align-items:center}
+  .story .panel.flip .copy{order:2}
+  .story h2{font-size:clamp(40px,5.6vw,80px);line-height:.96;margin:18px 0 22px}
+  .story .say{font:700 clamp(19px,1.8vw,24px)/1.35 var(--body)}
+  .story .say span{display:block;font-weight:500;color:var(--ink-68);margin-top:8px}
+  .art svg{display:block;width:100%;height:auto}
+  .lamp{width:100%;max-width:540px;margin:0 auto}
+
+  .feed{display:flex;flex-direction:column;gap:14px;max-width:560px;margin:0 auto;padding:0;font-size:clamp(15px,1.5vw,19px)}
+  .feed .slip{align-self:flex-start;white-space:normal}
+  .feed .slip:nth-child(even){align-self:flex-end}
+  .feed .slip.key{position:relative;font-size:1.22em;align-self:stretch;transform:rotate(-1.5deg);margin-top:10px;padding:.8em 1em 1em}
+  .seen{position:absolute;right:-6px;top:-20px;transform:rotate(6deg);background:var(--ink);color:var(--paper);border:2.5px solid var(--ink);border-radius:100px;
+    padding:7px 14px;font:800 12px/1 var(--body);letter-spacing:.1em;text-transform:uppercase;box-shadow:3px 3px 0 var(--accent);white-space:nowrap}
+
+  .replies{display:flex;flex-wrap:wrap;gap:18px 16px;justify-content:center;padding:10px 0;margin:0;font-size:clamp(17px,1.8vw,24px)}
+  .replies .slip{transform:rotate(var(--r))}
+
+  /* the answer card: ink, with the waitlist form inside */
+  .answer{position:relative;background:var(--ink);color:var(--paper);border:3px solid var(--ink);border-radius:24px;box-shadow:10px 10px 0 var(--accent);
+    padding:clamp(28px,4vw,56px);max-width:1100px;margin:clamp(56px,7vw,96px) auto 0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:end;scroll-margin-top:96px}
+  .answer .wm{font-size:clamp(56px,7vw,96px)}
+  .answer h2{font-size:clamp(30px,3.4vw,46px);line-height:1.02;margin:22px 0 14px;color:var(--paper)}
+  .answer p{font:500 17px/1.55 var(--body);color:var(--paper-72)}
+
+  /* ---------- waitlist form (two blocks share state) ---------- */
+  .wl .roles{display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap}
+  .role-btn{padding:10px 16px;border-radius:100px;cursor:pointer;font-size:14px;background:var(--card);color:var(--ink);border:2.5px solid rgba(28,23,16,.25);
     font-weight:600;transition:background .12s ease,border-color .12s ease}
   .role-btn.is-active{background:var(--accent);border-color:var(--ink);font-weight:700}
+  .on-ink .role-btn{background:transparent;color:var(--paper);border-color:rgba(251,242,228,.35)}
+  .on-ink .role-btn.is-active{background:var(--accent);color:var(--ink);border-color:var(--accent)}
+  .wl-form{display:flex;gap:10px;flex-wrap:wrap}
+  .wl-email{flex:1 1 220px;min-width:0;padding:14px 18px;border:2.5px solid var(--ink);border-radius:12px;font:500 16px var(--body);background:var(--card);color:var(--ink)}
+  .wl-form .btn{border-radius:12px;padding:14px 24px;box-shadow:none}
+  .wl-form .btn:hover{transform:none;box-shadow:none}
+  .wl-error{color:var(--err);font-size:13.5px;margin:10px 0 0;font-weight:600}
+  .on-ink .wl-error{color:#FF8FA6}
+  .wl-success{padding:16px 20px;background:var(--ink);color:var(--paper);border-radius:14px;font-weight:600;border:2.5px solid var(--ink)}
+  .on-ink .wl-success{background:var(--accent);color:var(--ink)}
+  .wl .hint{font-size:13px;margin-top:14px;color:var(--ink-62)}
+  .on-ink .wl .hint{color:var(--paper-60)}
 
-  /* waitlist form pieces */
-  .wl-error{color:var(--err);font-size:13px;margin:10px 0 0;font-weight:600}
-  .wl-success{padding:16px 20px;background:var(--ink);color:var(--paper);border-radius:14px;
-    font-weight:600;border:2.5px solid var(--ink)}
-  [hidden]{display:none !important}
+  /* ---------- section heads ---------- */
+  .band{padding:clamp(64px,8vw,112px) var(--gut)}
+  .head{max-width:760px;margin-bottom:clamp(36px,5vw,56px)}
+  .head h2{font-size:clamp(36px,4.6vw,64px);line-height:.98;margin-top:16px}
+  .head .lead{margin-top:18px}
 
-  /* faq accordion */
-  .faq-item{border-bottom:2px solid rgba(251,242,228,0.18);padding:22px 0}
+  /* ---------- how it works: one ticket, three stubs ---------- */
+  .how{border-top:2.5px solid var(--ink)}
+  .tkt{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));background:var(--card);border:3px solid var(--ink);border-radius:22px;box-shadow:8px 8px 0 var(--ink)}
+  .tkt .seg{position:relative;z-index:1;padding:clamp(26px,3vw,40px) clamp(22px,2.6vw,36px)}
+  .tkt .seg + .seg{border-left:3px dashed var(--accent)}
+  .tkt.is-drawn{background:none;border-color:transparent;box-shadow:none}
+  .tkt.is-drawn .seg + .seg{border-left-color:transparent;border-top-color:transparent}
+  .tkt > svg.t-shape{position:absolute;left:0;top:0;overflow:visible;z-index:0;pointer-events:none}
+  .seg .no{font:900 clamp(64px,7vw,96px)/.8 var(--stock);letter-spacing:-0.01em}
+  .seg .eb{font:900 13px/1 var(--stock);letter-spacing:.32em;color:var(--ink-62);margin:22px 0 10px}
+  .seg h3{font-size:clamp(24px,2.4vw,32px);line-height:1.02}
+  .seg p{font:500 15.5px/1.5 var(--body);color:var(--ink-68);margin-top:10px;max-width:300px}
+  .how .after{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px;margin-top:40px}
+  .how .after p{font:600 17px/1.5 var(--body);max-width:620px}
+  .seal{display:block;width:132px;height:132px}
+  @media (max-width:820px){
+    .tkt{grid-template-columns:1fr}
+    .tkt .seg + .seg{border-left:none;border-top:3px dashed var(--accent)}
+    .tkt .seg{display:grid;grid-template-columns:auto 1fr;column-gap:22px;align-items:start}
+    .tkt .seg .no{grid-row:span 3;font-size:64px;padding-top:4px}
+    .seg .eb{margin-top:2px}
+  }
+
+  /* ---------- for organisers ---------- */
+  .org .wrap.cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:start}
+  .org h2{color:var(--paper)}
+  .print{position:relative;background:var(--card);padding:12px;border:3px solid var(--ink);border-radius:14px;box-shadow:10px 10px 0 rgba(251,242,228,.92);transform:rotate(1.5deg)}
+  .print img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;object-position:70% 60%;border:2.5px solid var(--ink);border-radius:6px}
+  .print figcaption{font:800 11px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-62);padding:10px 2px 0}
+  .tape{position:absolute;width:110px;height:34px;background:rgba(255,251,243,.8);z-index:2;
+    clip-path:polygon(0 8%,4% 0,9% 10%,14% 0,100% 0,96% 12%,100% 26%,95% 40%,100% 58%,96% 74%,100% 88%,97% 100%,0 100%,3% 86%,0 70%,4% 52%,0 36%,4% 20%)}
+  .feats{list-style:none;padding:0;margin:clamp(28px,4vw,40px) 0 0;display:grid;gap:0;border-top:2px solid rgba(251,242,228,.18)}
+  .feats li{display:grid;grid-template-columns:22px 1fr;gap:14px;padding:16px 0;border-bottom:2px solid rgba(251,242,228,.18);font:500 16.5px/1.5 var(--body);color:var(--paper-72)}
+  .feats li::before{content:"";width:12px;height:12px;margin-top:6px;border-radius:50%;background:var(--accent)}
+  .feats b{color:var(--paper);font-weight:700}
+  .wanted{position:relative;margin-top:clamp(48px,6vw,80px);background:var(--card);color:var(--ink);border:3px solid var(--ink);border-radius:10px;box-shadow:10px 10px 0 rgba(251,242,228,.92);
+    padding:clamp(26px,4vw,48px);transform:rotate(-.6deg);display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:clamp(18px,3vw,40px);align-items:center}
+  .wanted .w{font:800 clamp(40px,5vw,72px)/.86 var(--display);font-variation-settings:'opsz' 96;letter-spacing:-0.025em}
+  .wanted .n{font:800 clamp(110px,13vw,190px)/.8 var(--display);font-variation-settings:'opsz' 96;letter-spacing:-0.04em;color:var(--accent);
+    -webkit-text-stroke:5px var(--ink);paint-order:stroke fill;text-shadow:7px 7px 0 var(--ink)}
+  .wanted h3{font-size:clamp(26px,2.8vw,40px);line-height:1.02}
+  .wanted p{font:500 16px/1.5 var(--body);color:var(--ink-68);margin:12px 0 22px;max-width:520px}
+  .wanted .seal{width:150px;height:150px;transform:rotate(-10deg)}
+  .wanted .tape.l{left:-26px;top:-12px;transform:rotate(-28deg)}
+  .wanted .tape.r{right:-26px;top:-12px;transform:rotate(26deg)}
+
+  /* ---------- Sainikpuri first ---------- */
+  .where{border-top:2.5px solid var(--ink)}
+  .where .wrap.cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(28px,5vw,72px);align-items:center}
+  .where h2 span{color:var(--ink-62)}
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px;padding:0;list-style:none}
+  .chips li{padding:8px 14px;border:2.5px solid var(--ink);border-radius:100px;background:var(--card);font:700 12.5px/1 var(--body);letter-spacing:.06em;text-transform:uppercase}
+  .chips li:first-child{background:var(--accent)}
+  .mapcard{background:var(--ink);border:3px solid var(--ink);border-radius:24px;box-shadow:10px 10px 0 var(--accent);overflow:hidden}
+  .mapcard svg{display:block;width:100%;height:auto}
+
+  /* ---------- founders ---------- */
+  .founders{border-top:2.5px solid var(--ink)}
+  .quote{font:italic 500 clamp(18px,1.8vw,22px)/1.55 var(--body);max-width:760px;margin-top:20px}
+  .people{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:44px}
+  .person{margin:0;background:var(--card);border:2.5px solid var(--ink);border-radius:20px;overflow:hidden;box-shadow:6px 6px 0 rgba(28,23,16,.14)}
+  .person img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-bottom:2.5px solid var(--ink)}
+  .person figcaption{padding:18px 20px}
+  .person h3{font-size:19px;letter-spacing:-0.01em}
+  .person .role{font:700 12px/1 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--accent-dark);margin:8px 0 10px}
+  .person p{font-size:14px;line-height:1.55;color:var(--ink-68)}
+
+  /* ---------- FAQ ---------- */
+  .faq .wrap{max-width:820px}
+  .faq h2{color:var(--paper)}
+  .faq-item{border-bottom:2px solid rgba(251,242,228,.18);padding:22px 0}
   .faq-item:last-child{border-bottom:none}
-  .faq-q{width:100%;background:none;border:none;color:var(--paper);display:flex;
-    justify-content:space-between;align-items:center;gap:16px;font-family:'Bricolage Grotesque',sans-serif;
-    font-weight:700;font-size:18px;cursor:pointer;padding:0;text-align:left}
-  .faq-icon{font-size:22px;flex:0 0 auto}
-  .faq-a{margin:14px 0 0;font-size:15px;line-height:1.6;color:rgba(251,242,228,0.72);max-width:640px;display:none}
+  .faq-q{width:100%;background:none;border:none;color:var(--paper);display:flex;justify-content:space-between;align-items:center;gap:16px;font:700 19px/1.3 var(--display);
+    font-variation-settings:'opsz' 24;cursor:pointer;padding:0;text-align:left}
+  .faq-icon{font:700 24px/1 var(--body);flex:0 0 auto;color:var(--accent)}
+  .faq-a{margin:14px 0 0;font-size:15.5px;line-height:1.6;color:var(--paper-72);max-width:660px;display:none}
+  .faq-a a{text-decoration:underline}
   .faq-item.open .faq-a{display:block}
 
-  @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  /* ---------- final CTA ---------- */
+  .final{text-align:center;padding:clamp(72px,9vw,120px) var(--gut)}
+  .final h2{font-size:clamp(44px,6vw,84px);line-height:.95}
+  .final .lead{margin:18px auto 34px;color:var(--ink);max-width:620px}
+  .final .wl{max-width:620px;margin:0 auto;text-align:left;background:var(--paper);border:3px solid var(--ink);border-radius:24px;padding:clamp(22px,3vw,32px);box-shadow:8px 8px 0 var(--ink)}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--ink);color:var(--paper-72);padding:56px var(--gut) 28px}
+  footer .top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;padding-bottom:40px;border-bottom:1px solid rgba(251,242,228,.15)}
+  footer .about{flex:1 1 240px;max-width:320px}
+  footer .about .wm{font-size:28px;color:var(--paper);margin-bottom:12px;--hole:var(--ink)}
+  footer .about p{font-size:14px;line-height:1.6;color:var(--paper-60)}
+  footer .col{display:flex;flex-direction:column;gap:10px;font-size:14px}
+  footer .col b{color:var(--paper);margin-bottom:4px}
+  footer .col a:hover{color:var(--accent)}
+  footer .base{padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;color:rgba(251,242,228,.5)}
+
+  /* ---------- small screens ---------- */
+  @media (max-width:900px){
+    .hero .wrap,.story .panel .wrap,.answer,.org .wrap.cols,.where .wrap.cols{grid-template-columns:minmax(0,1fr)}
+    .story .panel.flip .copy{order:0}
+    .pile{margin:8px auto 0;aspect-ratio:1/1.02}
+    .people{grid-template-columns:repeat(3,minmax(200px,1fr));overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 4px 16px;margin-right:calc(-1 * var(--gut))}
+    .person{scroll-snap-align:start}
+  }
+  @media (max-width:640px){
+    .wanted{grid-template-columns:minmax(0,1fr);transform:none}
+    .wanted .seal{position:absolute;right:14px;top:14px;width:104px;height:104px}
+    .people{grid-template-columns:repeat(3,78%)}
+    .hero .ctas .btn{flex:1 1 auto}
+  }
 
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto}
-    .marquee-track{animation:none !important;transform:none !important}
-    .pop{transition:none}
+    .pile .slip{animation:none}
+    .btn{transition:none}
   }
   </style>
   <script type="application/ld+json">
@@ -113,7 +326,7 @@
         "image": "https://www.ilaka.co.in/assets/photos/community-2.jpg",
         "email": "support@ilaka.co.in",
         "sameAs": [
-          "https://www.instagram.com/ilakaofficial/",
+          "https://instagram.com/ilaka.in",
           "https://www.linkedin.com/company/ilaka/"
         ],
         "description": "Hyperlocal platform for discovering and registering for community events, classes and workshops in your neighbourhood.",
@@ -158,7 +371,7 @@
         "@id": "https://www.ilaka.co.in/#website",
         "url": "https://www.ilaka.co.in/",
         "name": "Ilaka",
-        "description": "Find yoga, run clubs, workshops, tuitions and community events minutes from home in Sainikpuri, Hyderabad. Register in a tap. Join the Ilaka beta waitlist.",
+        "description": "Find yoga, run clubs, workshops, tuitions and community events minutes from home in Sainikpuri, Hyderabad. Register free. Show your ticket at the door. Join the Ilaka beta waitlist.",
         "inLanguage": "en-IN",
         "publisher": {
           "@id": "https://www.ilaka.co.in/#organization"
@@ -176,23 +389,23 @@
             "name": "Is Ilaka free to use?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Free for anyone discovering and registering for events — always. Organisers pay a small commission when they get paid, and nothing at all until they pass 10 active members. Above that, a monthly plan scales with the size of their roster, starting at ₹199."
+              "text": "Free for neighbours, always. Organisers pay a small commission only when they get paid."
             }
           },
           {
             "@type": "Question",
-            "name": "Which city are you launching in first?",
+            "name": "Where are you starting?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "We're starting hyperlocal in Sainikpuri, Hyderabad, then expanding neighbourhood by neighbourhood."
+              "text": "Sainikpuri, Hyderabad (500094). Then the next neighbourhood over, one at a time."
             }
           },
           {
             "@type": "Question",
-            "name": "I run a class or workshop — how do I get listed?",
+            "name": "I run a class or workshop. How do I get listed?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Join the waitlist as an organiser and we'll bring you into early access to set up your first listing."
+              "text": "Join the waitlist as an organiser. We're onboarding 25 founding organisers in Sainikpuri in person, and we'll set up your first listing with you."
             }
           },
           {
@@ -200,15 +413,23 @@
             "name": "Do you handle payments?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes — registration and payment happen right in the app, with tickets issued instantly."
+              "text": "Not yet. At launch, registering on Ilaka is free. You get a QR ticket and show it at the door. Paid tickets come later."
             }
           },
           {
             "@type": "Question",
-            "name": "When does the beta launch?",
+            "name": "Do I need to download an app?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "We're onboarding our first neighbourhood organisers now, with the beta app following shortly after."
+              "text": "No. Ilaka works in your phone's browser."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "When does the beta open?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The web beta opens in Sainikpuri on Saturday 31 October, starting with our first invites. Everyone on the waitlist gets in after that."
             }
           }
         ]
@@ -218,435 +439,416 @@
   </script>
 </head>
 <body>
-<div style="background:var(--paper);overflow-x:clip">
+<a class="skip" href="#main">Skip to content</a>
 
-  <!-- ===================== NAV ===================== -->
-  <nav style="position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px clamp(20px,5vw,64px);background:rgba(251,242,228,0.92);backdrop-filter:blur(8px);border-bottom:2.5px solid var(--ink);flex-wrap:wrap">
-    <a href="#hero" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:24px;letter-spacing:-0.02em">ilaka<span style="color:var(--accent)">.</span></a>
-    <div style="display:flex;align-items:center;gap:28px;flex-wrap:wrap">
-      <a href="#organisers" style="font-size:14.5px;font-weight:600">For organisers</a>
-      <a href="#usecases" style="font-size:14.5px;font-weight:600">Use cases</a>
-      <a href="#how-it-works" style="font-size:14.5px;font-weight:600">How it works</a>
-      <a href="#faq" style="font-size:14.5px;font-weight:600">FAQ</a>
-      <a href="#join" class="pop sh-ink-sm" style="padding:10px 20px;background:var(--accent);color:var(--ink);border:2.5px solid var(--ink);border-radius:100px;font-weight:700;font-size:14px">Join waitlist</a>
-    </div>
-  </nav>
+<!-- ===================== NAV ===================== -->
+<header class="nav">
+  <div class="wrap">
+    <a href="#main" class="wm" aria-label="Ilaka, home">ilaka<span class="ring" aria-hidden="true"></span></a>
+    <nav class="links" aria-label="Main">
+      <a href="#how-it-works">How it works</a>
+      <a href="#organisers">For organisers</a>
+      <a href="#sainikpuri">Sainikpuri</a>
+      <a href="#faq">FAQ</a>
+      <a href="#join" class="btn accent">Join the waitlist</a>
+    </nav>
+  </div>
+</header>
 
-  <!-- ===================== HERO ===================== -->
-  <section id="hero" style="position:relative;overflow:hidden;padding:64px clamp(20px,5vw,64px) 0;background-image:radial-gradient(rgba(28,23,16,0.09) 1.6px, transparent 1.6px);background-size:24px 24px">
-    <div style="max-width:1240px;margin:0 auto;display:flex;gap:56px;align-items:center;flex-wrap:wrap;padding-bottom:64px">
-      <div style="flex:1 1 300px;min-width:280px">
-        <div style="display:inline-flex;align-items:center;gap:9px;padding:7px 14px;background:var(--ink);color:var(--paper);border-radius:100px;font-size:12.5px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:26px">
-          <span style="width:7px;height:7px;border-radius:50%;background:var(--accent)"></span>
-          <span>Beta launching in Sainikpuri, Hyderabad</span>
+<main id="main">
+
+  <!-- ===================== 1/4 · HERO ===================== -->
+  <section id="hero" class="hero g-ink dots" aria-labelledby="hero-title">
+    <div class="wrap">
+      <div class="copy">
+        <span class="kicker">Sainikpuri · Hyderabad</span>
+        <h1 id="hero-title">Forty WhatsApp<br>groups.<br>One yoga class.</h1>
+        <p class="lead">That’s how most neighbourhoods find out what’s on. Ilaka puts it on one page, starting in Sainikpuri.</p>
+        <div class="ctas">
+          <a href="#join" class="btn accent">Join the waitlist</a>
+          <a href="#organisers" class="btn ghost">I run a class</a>
         </div>
-        <h1 style="font-weight:800;font-size:clamp(38px,5.4vw,70px);line-height:1.03;letter-spacing:-0.02em;margin:0 0 22px">Your class deserves a full room.</h1>
-        <p style="font-size:19px;line-height:1.6;color:rgba(28,23,16,0.75);max-width:520px;margin:0 0 34px">Ilaka puts your yoga sessions, run club, tuitions, or weekend workshop in front of neighbours actually looking for something to do, then handles registrations so you don't have to.</p>
+        <p class="note">Free for neighbours. Web beta opens Sat 31 Oct.</p>
+      </div>
+      <ul class="pile" aria-label="Messages about one yoga class, spread across different groups">
+        <li class="slip" style="--x:60%;--y:2%;--r:8deg;--i:0"><small>Society notices</small>Plumber number?</li>
+        <li class="slip" style="--x:2%;--y:6%;--r:-6deg;--i:1"><small>Yoga (new)</small>Yoga tomorrow? 6 or 7?</li>
+        <li class="slip" style="--x:28%;--y:24%;--r:4deg;--i:2"><small>Block C residents</small>Fwd: free trial class this Sat</li>
+        <li class="slip" style="--x:-4%;--y:40%;--r:-3deg;--i:3"><small>Kids’ activities</small>Any update?</li>
+        <li class="slip accent" style="--x:10%;--y:50%;--r:2.5deg;--i:4"><small>Yoga (new) (2)</small>Same class as the other group?</li>
+        <li class="slip" style="--x:62%;--y:68%;--r:-7deg;--i:5"><small>Morning walkers</small>Location pls</li>
+        <li class="slip" style="--x:3%;--y:76%;--r:-1.5deg;--i:6"><small>Yoga (new)</small>Who’s coming?</li>
+        <li class="slip" style="--x:36%;--y:86%;--r:4deg;--i:7"><small>Block C residents</small>Sorry, saw this late</li>
+      </ul>
+    </div>
+  </section>
 
-        <div id="join" class="wl" style="scroll-margin-top:90px;max-width:520px">
-          <div style="display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap">
-            <button class="role-btn is-active" data-role="business">I run a business/class</button>
-            <button class="role-btn" data-role="participant">I'm looking for things to do</button>
+  <!-- ===================== 2/4 – 4/4 · THE REST OF THE STORY ===================== -->
+  <div class="story" id="problem">
+
+    <section class="panel g-paper" aria-labelledby="p2">
+      <div class="wrap">
+        <div class="copy">
+          <span class="serial">N° 0002 · 2/4</span>
+          <h2 id="p2">Posters on lamp posts.</h2>
+          <p class="say">Taped up on Tuesday. Rained off by Thursday.<span>If you didn’t walk past that pole, you never knew.</span></p>
+        </div>
+        <div class="art lamp" aria-hidden="true">
+          <svg viewBox="0 0 520 600" role="presentation">
+            <g fill="#1C1710">
+              <rect x="120" y="70" width="24" height="530" rx="4"/>
+              <path d="M132 96 V62 Q132 30 164 30 H300" fill="none" stroke="#1C1710" stroke-width="24" stroke-linecap="round"/>
+              <path d="M244 66 A56 44 0 0 1 356 66 Z"/>
+              <rect x="114" y="176" width="36" height="12" rx="3"/>
+              <rect x="114" y="556" width="36" height="12" rx="3"/>
+            </g>
+            <path d="M282 66 H318 A18 18 0 0 1 282 66 Z" fill="#FF7A1F" stroke="#1C1710" stroke-width="5"/>
+            <!-- tuition poster, torn at the bottom -->
+            <g transform="translate(262 140) rotate(6)">
+              <polygon points="7,7 227,7 227,190 213,202 219,216 199,224 203,240 177,234 167,254 145,242 129,250 107,236 87,248 67,236 47,244 7,230" fill="#1C1710"/>
+              <polygon points="0,0 220,0 220,183 206,195 212,209 192,217 196,233 170,227 160,247 138,235 122,243 100,229 80,241 60,229 40,237 0,223" fill="#FFFBF3" stroke="#1C1710" stroke-width="4" stroke-linejoin="round"/>
+              <text x="20" y="54" font-family="Bricolage Grotesque" font-weight="800" font-size="42" fill="#1C1710">TUITION</text>
+              <text x="20" y="94" font-family="Bricolage Grotesque" font-weight="800" font-size="34" fill="#1C1710">CLASS 6–10</text>
+              <text x="20" y="134" font-family="Plus Jakarta Sans" font-weight="700" font-size="18" fill="#1C1710">Maths · Science</text>
+              <text x="20" y="160" font-family="Plus Jakarta Sans" font-weight="700" font-size="18" fill="#1C1710">Evening batch</text>
+            </g>
+            <!-- yoga poster, tear-off tabs half gone -->
+            <g transform="translate(36 214) rotate(-4)">
+              <rect x="7" y="7" width="250" height="218" fill="#1C1710"/>
+              <rect x="0" y="0" width="250" height="218" fill="#FFFBF3" stroke="#1C1710" stroke-width="4"/>
+              <text x="20" y="64" font-family="Bricolage Grotesque" font-weight="800" font-size="52" fill="#1C1710">YOGA</text>
+              <text x="20" y="118" font-family="Bricolage Grotesque" font-weight="800" font-size="52" fill="#1C1710">CLASSES</text>
+              <text x="20" y="160" font-family="Plus Jakarta Sans" font-weight="700" font-size="18" fill="#1C1710">Mon–Sat · 6 AM</text>
+              <text x="20" y="188" font-family="Plus Jakarta Sans" font-weight="700" font-size="18" fill="#1C1710">Near the park gate</text>
+              <g fill="#FFFBF3" stroke="#1C1710" stroke-width="3" stroke-dasharray="6 5"><rect x="0.0" y="218" width="41.7" height="100"/><rect x="83.3" y="218" width="41.7" height="100"/><rect x="125.0" y="218" width="41.7" height="100"/><rect x="208.3" y="218" width="41.7" height="100"/></g>
+              <g font-family="Darker Grotesque" font-weight="900" font-size="15" fill="#1C1710" letter-spacing="1"><text transform="translate(27.0 310) rotate(-90)">9XXXX XXXXX</text><text transform="translate(110.3 310) rotate(-90)">9XXXX XXXXX</text><text transform="translate(152.0 310) rotate(-90)">9XXXX XXXXX</text><text transform="translate(235.3 310) rotate(-90)">9XXXX XXXXX</text></g>
+            </g>
+            <rect x="82" y="196" width="104" height="30" fill="rgba(255,251,243,.85)" transform="rotate(-8 134 211)"/>
+            <!-- guitar poster, ripped on the right -->
+            <g transform="translate(196 470) rotate(3)">
+              <polygon points="7,7 247,7 239,31 253,53 241,77 251,105 7,105" fill="#1C1710"/>
+              <polygon points="0,0 240,0 232,24 246,46 234,70 244,98 0,98" fill="#FFFBF3" stroke="#1C1710" stroke-width="4" stroke-linejoin="round"/>
+              <text x="20" y="46" font-family="Bricolage Grotesque" font-weight="800" font-size="36" fill="#1C1710">GUITAR</text>
+              <text x="20" y="78" font-family="Plus Jakarta Sans" font-weight="700" font-size="18" fill="#1C1710">Weekend · beginners</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel flip g-paper" aria-labelledby="p3">
+      <div class="wrap">
+        <div class="copy">
+          <span class="serial">N° 0003 · 3/4</span>
+          <h2 id="p3">Missed forwards.</h2>
+          <p class="say">You saw it on Sunday.<span>The class was Saturday.</span></p>
+        </div>
+        <ul class="feed" aria-label="A forwarded message, buried">
+          <li class="slip"><small>Forwarded</small>Good morning, everyone</li>
+          <li class="slip"><small>Forwarded</small>Water supply off till 4 PM</li>
+          <li class="slip"><small>Forwarded</small>Diwali mela committee meeting</li>
+          <li class="slip accent key"><small>Forwarded many times</small>Sunrise yoga at the park gate. Sat, 6:30 AM. Mats provided.<span class="seen">Seen Sun · 9:12 PM</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="panel g-paper" aria-labelledby="p4">
+      <div class="wrap">
+        <div class="copy">
+          <span class="serial">N° 0004 · 4/4</span>
+          <h2 id="p4">“Who’s coming?”</h2>
+          <p class="say">Three maybes and a +1.<span>That’s not a headcount.</span></p>
+        </div>
+        <ul class="replies" aria-label="Replies">
+          <li class="slip" style="--r:-4deg">Maybe</li>
+          <li class="slip" style="--r:3deg">Will try</li>
+          <li class="slip" style="--r:-2deg">Depends on rain</li>
+          <li class="slip" style="--r:5deg">Maybe</li>
+          <li class="slip accent" style="--r:-3deg">+1</li>
+          <li class="slip" style="--r:4deg">Maybe na</li>
+        </ul>
+      </div>
+
+      <div id="join" class="answer on-ink">
+        <div>
+          <div class="wm">ilaka<span class="ring" aria-hidden="true"></span></div>
+          <h2>One page for what’s on near you.</h2>
+          <p>Register free. Show your ticket at the door. The organiser knows who’s coming.</p>
+        </div>
+        <div class="wl">
+          <div class="roles">
+            <button type="button" class="role-btn is-active" data-role="business">I run a business/class</button>
+            <button type="button" class="role-btn" data-role="participant">I'm looking for things to do</button>
           </div>
-          <form class="wl-form" novalidate style="display:flex;gap:10px;flex-wrap:wrap">
-            <input type="email" class="wl-email" placeholder="you@email.com" autocomplete="email" maxlength="254" style="flex:1 1 220px;min-width:200px;padding:14px 18px;border:2.5px solid var(--ink);border-radius:12px;font-size:15px;font-family:'Plus Jakarta Sans',sans-serif;background:var(--card);color:var(--ink)" />
-            <button type="submit" class="pop sh-ink" style="padding:14px 24px;background:var(--accent);color:var(--ink);border:2.5px solid var(--ink);border-radius:12px;font-weight:800;font-family:'Bricolage Grotesque',sans-serif;font-size:15px;cursor:pointer">Join the waitlist</button>
+          <form class="wl-form" novalidate>
+            <label class="skip" for="wl-email-1">Email address</label>
+            <input id="wl-email-1" type="email" class="wl-email" placeholder="you@email.com" autocomplete="email" maxlength="254" />
+            <button type="submit" class="btn accent">Join the waitlist</button>
           </form>
           <p class="wl-error" hidden></p>
           <div class="wl-success" hidden></div>
-          <p style="font-size:13px;color:rgba(28,23,16,0.55);margin-top:14px">Free for neighbours. Simple pricing for organisers. No spam, ever.</p>
+          <p class="hint">Free for neighbours. No spam, ever.</p>
         </div>
       </div>
-
-      <div style="flex:1 1 260px;min-width:240px;position:relative;display:flex;justify-content:center;padding:20px 0 40px">
-        <div style="position:absolute;top:24px;left:calc(50% - 200px);width:340px;height:88%;background:var(--accent);border:3px solid var(--ink);border-radius:24px;transform:rotate(-4deg);z-index:0"></div>
-        <div style="position:relative;z-index:1;width:100%;max-width:380px;aspect-ratio:4/5;border:3px solid var(--ink);border-radius:24px;overflow:hidden;box-shadow:10px 10px 0 rgba(28,23,16,0.85)">
-          <img src="assets/creatives/ilaka-poster-3.webp" width="1080" height="1350" fetchpriority="high" decoding="async" alt="Illustrated poster: women in sarees watching a retro TV announcing iLaka, launching soon" style="width:100%;height:100%;object-fit:cover;display:block" />
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== MARQUEE ===================== -->
-  <div style="background:var(--ink);padding:16px 0;overflow:hidden;border-top:2.5px solid var(--ink);border-bottom:2.5px solid var(--ink)">
-    <div class="marquee-track" style="display:flex;width:max-content;animation:marquee 32s linear infinite">
-      <div class="marquee-set" style="display:flex;align-items:center"></div>
-      <div class="marquee-set" style="display:flex;align-items:center"></div>
-    </div>
+    </section>
   </div>
 
-  <!-- ===================== FOR ORGANISERS ===================== -->
-  <section id="organisers" style="background:var(--ink);color:var(--paper);padding:96px clamp(20px,5vw,64px)">
-    <div style="max-width:1240px;margin:0 auto">
-      <div style="max-width:680px;margin-bottom:56px">
-        <div style="font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:14px">For organisers</div>
-        <h2 style="font-weight:800;font-size:clamp(30px,4vw,48px);line-height:1.08">Built for the person running the class, not managing a spreadsheet.</h2>
-      </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;margin-bottom:44px">
-        <div style="background:rgba(251,242,228,0.06);border:2px solid rgba(251,242,228,0.18);border-radius:18px;padding:28px">
-          <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:32px;color:var(--accent);margin-bottom:16px">01</div>
-          <h3 style="font-weight:700;font-size:19px;margin:0 0 10px">List in minutes</h3>
-          <p style="font-size:15px;line-height:1.6;color:rgba(251,242,228,0.72);margin:0">One-time, multi-day, or recurring — set your schedule once and Ilaka handles the rest.</p>
-        </div>
-        <div style="background:rgba(251,242,228,0.06);border:2px solid rgba(251,242,228,0.18);border-radius:18px;padding:28px">
-          <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:32px;color:var(--accent);margin-bottom:16px">02</div>
-          <h3 style="font-weight:700;font-size:19px;margin:0 0 10px">Get discovered nearby</h3>
-          <p style="font-size:15px;line-height:1.6;color:rgba(251,242,228,0.72);margin:0">Show up in front of neighbours who are actually looking for something to do close by.</p>
-        </div>
-        <div style="background:rgba(251,242,228,0.06);border:2px solid rgba(251,242,228,0.18);border-radius:18px;padding:28px">
-          <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:32px;color:var(--accent);margin-bottom:16px">03</div>
-          <h3 style="font-weight:700;font-size:19px;margin:0 0 10px">Registrations, sorted</h3>
-          <p style="font-size:15px;line-height:1.6;color:rgba(251,242,228,0.72);margin:0">People sign up and pay in-app — you get a clean list, not a WhatsApp thread.</p>
-        </div>
-        <div style="background:rgba(251,242,228,0.06);border:2px solid rgba(251,242,228,0.18);border-radius:18px;padding:28px">
-          <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:32px;color:var(--accent);margin-bottom:16px">04</div>
-          <h3 style="font-weight:700;font-size:19px;margin:0 0 10px">Grow a following</h3>
-          <p style="font-size:15px;line-height:1.6;color:rgba(251,242,228,0.72);margin:0">Turn regulars into a community that follows your announcements, always.</p>
-        </div>
-      </div>
-      <a href="#join" class="role-cta pop sh-paper" data-role="business" style="display:inline-block;padding:14px 26px;background:var(--accent);color:var(--ink);border:2.5px solid var(--ink);border-radius:100px;font-weight:800;font-family:'Bricolage Grotesque',sans-serif;font-size:15px">I run a business or class →</a>
-    </div>
-  </section>
-
-  <!-- ===================== FOR NEIGHBOURS ===================== -->
-  <section id="participants" style="padding:80px clamp(20px,5vw,64px);background:var(--paper)">
-    <div style="max-width:1240px;margin:0 auto;display:flex;gap:48px;flex-wrap:wrap;align-items:flex-start">
-      <div style="flex:1 1 300px;min-width:260px">
-        <div style="font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:14px">For neighbours</div>
-        <h2 style="font-weight:800;font-size:clamp(24px,3vw,34px);line-height:1.15;margin:0 0 16px">Everything fun happening near you, actually near you.</h2>
-        <p style="font-size:15.5px;line-height:1.6;color:rgba(28,23,16,0.68);margin:0 0 18px">A feed built around your block, not the whole city.</p>
-        <a href="#join" class="role-cta" data-role="participant" style="font-weight:700;color:var(--accent);font-size:15px;border-bottom:2px solid var(--accent);padding-bottom:2px">I'm looking for things to do →</a>
-      </div>
-      <div style="flex:2 1 480px;min-width:280px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px">
-        <div style="background:var(--card);border:2px solid rgba(28,23,16,0.15);border-radius:16px;padding:22px">
-          <h3 style="font-weight:700;font-size:16.5px;margin:0 0 8px">Discover hyperlocal</h3>
-          <p style="font-size:14px;line-height:1.55;color:rgba(28,23,16,0.65);margin:0">Ranked by what's close, what you like, and what's on this week.</p>
-        </div>
-        <div style="background:var(--card);border:2px solid rgba(28,23,16,0.15);border-radius:16px;padding:22px">
-          <h3 style="font-weight:700;font-size:16.5px;margin:0 0 8px">Register in one tap</h3>
-          <p style="font-size:14px;line-height:1.55;color:rgba(28,23,16,0.65);margin:0">Pay in-app, skip the back-and-forth messages entirely.</p>
-        </div>
-        <div style="background:var(--card);border:2px solid rgba(28,23,16,0.15);border-radius:16px;padding:22px">
-          <h3 style="font-weight:700;font-size:16.5px;margin:0 0 8px">Ticket + community</h3>
-          <p style="font-size:14px;line-height:1.55;color:rgba(28,23,16,0.65);margin:0">A QR ticket lands in My Events, and you're in the community around it.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== USE CASES ===================== -->
-  <section id="usecases" style="padding:96px clamp(20px,5vw,64px);background:var(--paper)">
-    <div style="max-width:1240px;margin:0 auto">
-      <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;margin-bottom:48px">
-        <div>
-          <div style="font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:14px">What people are listing</div>
-          <h2 style="font-weight:800;font-size:clamp(28px,3.6vw,44px);line-height:1.1">One neighbourhood.<br>Endless things to do.</h2>
-        </div>
-        <p style="max-width:320px;font-size:15px;color:rgba(28,23,16,0.62);margin:0">From weekly yoga to weekend workshops — if it happens near you, it belongs on Ilaka.</p>
-      </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:26px">
-
-        <div style="background:var(--card);border:2.5px solid var(--ink);border-radius:20px;overflow:hidden;box-shadow:6px 6px 0 rgba(28,23,16,0.14)">
-          <img src="assets/photos/yoga.jpg" alt="A group holding a stretch together at an open-air morning yoga session" loading="lazy" style="width:100%;height:190px;object-fit:cover;display:block;border-bottom:2.5px solid var(--ink)" />
-          <div style="padding:20px">
-            <div style="display:inline-block;padding:4px 10px;background:var(--accent);border-radius:100px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink);margin-bottom:10px">Wellness</div>
-            <h3 style="font-weight:700;font-size:18px;margin:0 0 6px">Morning Yoga Circle</h3>
-            <p style="font-size:13.5px;color:rgba(28,23,16,0.62);margin:0">Twice-weekly sessions, small groups, right in the park.</p>
-          </div>
-        </div>
-
-        <div style="background:var(--card);border:2.5px solid var(--ink);border-radius:20px;overflow:hidden;box-shadow:6px 6px 0 rgba(28,23,16,0.14)">
-          <img src="assets/photos/run-club.jpg" alt="A run club crowded together over coffee after a morning run" loading="lazy" style="width:100%;height:190px;object-fit:cover;display:block;border-bottom:2.5px solid var(--ink)" />
-          <div style="padding:20px">
-            <div style="display:inline-block;padding:4px 10px;background:var(--accent);border-radius:100px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink);margin-bottom:10px">Fitness</div>
-            <h3 style="font-weight:700;font-size:18px;margin:0 0 6px">Saturday Run Club</h3>
-            <p style="font-size:13.5px;color:rgba(28,23,16,0.62);margin:0">A 5K loop, then filter coffee. Everyone's welcome.</p>
-          </div>
-        </div>
-
-        <div style="background:var(--card);border:2.5px solid var(--ink);border-radius:20px;overflow:hidden;box-shadow:6px 6px 0 rgba(28,23,16,0.14)">
-          <img src="assets/photos/pottery.jpg" alt="A potter shaping a cup on the wheel at a workbench full of tools and finished pieces" loading="lazy" style="width:100%;height:190px;object-fit:cover;display:block;border-bottom:2.5px solid var(--ink)" />
-          <div style="padding:20px">
-            <div style="display:inline-block;padding:4px 10px;background:var(--accent);border-radius:100px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink);margin-bottom:10px">Craft</div>
-            <h3 style="font-weight:700;font-size:18px;margin:0 0 6px">Weekend Pottery Workshop</h3>
-            <p style="font-size:13.5px;color:rgba(28,23,16,0.62);margin:0">Hands in clay, phones away. Beginners encouraged.</p>
-          </div>
-        </div>
-
-        <div style="background:var(--card);border:2.5px solid var(--ink);border-radius:20px;overflow:hidden;box-shadow:6px 6px 0 rgba(28,23,16,0.14)">
-          <img src="assets/photos/coding-bootcamp.jpg" alt="Two people working through code together on laptops at a small bootcamp table" loading="lazy" style="width:100%;height:190px;object-fit:cover;display:block;border-bottom:2.5px solid var(--ink)" />
-          <div style="padding:20px">
-            <div style="display:inline-block;padding:4px 10px;background:var(--accent);border-radius:100px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink);margin-bottom:10px">Learning</div>
-            <h3 style="font-weight:700;font-size:18px;margin:0 0 6px">Weekend Coding Bootcamp</h3>
-            <p style="font-size:13.5px;color:rgba(28,23,16,0.62);margin:0">Build a real project in a small, focused batch.</p>
-          </div>
-        </div>
-
-        <div style="background:var(--card);border:2.5px solid var(--ink);border-radius:20px;overflow:hidden;box-shadow:6px 6px 0 rgba(28,23,16,0.14)">
-          <img src="assets/photos/dance-class.jpg" alt="A dance teacher leading a class of students through a pose in an open hall" loading="lazy" style="width:100%;height:190px;object-fit:cover;display:block;border-bottom:2.5px solid var(--ink)" />
-          <div style="padding:20px">
-            <div style="display:inline-block;padding:4px 10px;background:var(--accent);border-radius:100px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink);margin-bottom:10px">Movement</div>
-            <h3 style="font-weight:700;font-size:18px;margin:0 0 6px">Evening Dance Class</h3>
-            <p style="font-size:13.5px;color:rgba(28,23,16,0.62);margin:0">Bollywood, hip-hop, or contemporary — pick your rhythm.</p>
-          </div>
-        </div>
-
-        <div style="background:var(--card);border:2.5px solid var(--ink);border-radius:20px;overflow:hidden;box-shadow:6px 6px 0 rgba(28,23,16,0.14)">
-          <img src="assets/photos/study-group.jpg" alt="Students sitting around a low table working through notes together" loading="lazy" style="width:100%;height:190px;object-fit:cover;display:block;border-bottom:2.5px solid var(--ink)" />
-          <div style="padding:20px">
-            <div style="display:inline-block;padding:4px 10px;background:var(--accent);border-radius:100px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink);margin-bottom:10px">Tuition</div>
-            <h3 style="font-weight:700;font-size:18px;margin:0 0 6px">Evening Study Circle</h3>
-            <p style="font-size:13.5px;color:rgba(28,23,16,0.62);margin:0">Same syllabus, same street. Small batches after school.</p>
-          </div>
-        </div>
-
-        <div style="background:var(--card);border:2.5px solid var(--ink);border-radius:20px;overflow:hidden;box-shadow:6px 6px 0 rgba(28,23,16,0.14)">
-          <img src="assets/photos/football-match.jpg" alt="A player striking the ball during a football match on a neighbourhood ground" loading="lazy" style="width:100%;height:190px;object-fit:cover;display:block;border-bottom:2.5px solid var(--ink)" />
-          <div style="padding:20px">
-            <div style="display:inline-block;padding:4px 10px;background:var(--accent);border-radius:100px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink);margin-bottom:10px">Sport</div>
-            <h3 style="font-weight:700;font-size:18px;margin:0 0 6px">Sunday Football Match</h3>
-            <p style="font-size:13.5px;color:rgba(28,23,16,0.62);margin:0">A proper game on the neighbourhood ground. Turn up solo, leave with a team.</p>
-          </div>
-        </div>
-
-        <div style="background:var(--card);border:2.5px solid var(--ink);border-radius:20px;overflow:hidden;box-shadow:6px 6px 0 rgba(28,23,16,0.14)">
-          <img src="assets/photos/diwali-party.jpg" alt="A group in festive kurtas posing together on the street on Diwali night" loading="lazy" style="width:100%;height:190px;object-fit:cover;display:block;border-bottom:2.5px solid var(--ink)" />
-          <div style="padding:20px">
-            <div style="display:inline-block;padding:4px 10px;background:var(--accent);border-radius:100px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink);margin-bottom:10px">Festival</div>
-            <h3 style="font-weight:700;font-size:18px;margin:0 0 6px">Diwali Party</h3>
-            <p style="font-size:13.5px;color:rgba(28,23,16,0.62);margin:0">Diyas, sweets, and the whole lane out on the street.</p>
-          </div>
-        </div>
-
-        <div style="background:var(--card);border:2.5px solid var(--ink);border-radius:20px;overflow:hidden;box-shadow:6px 6px 0 rgba(28,23,16,0.14)">
-          <img src="assets/photos/holi-party.jpg" alt="A group covered head to toe in pink colour posing together at a Holi celebration" loading="lazy" style="width:100%;height:190px;object-fit:cover;display:block;border-bottom:2.5px solid var(--ink)" />
-          <div style="padding:20px">
-            <div style="display:inline-block;padding:4px 10px;background:var(--accent);border-radius:100px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink);margin-bottom:10px">Festival</div>
-            <h3 style="font-weight:700;font-size:18px;margin:0 0 6px">Holi Party</h3>
-            <p style="font-size:13.5px;color:rgba(28,23,16,0.62);margin:0">Colours, music, and a hose. Bring clothes you'll ruin.</p>
-          </div>
-        </div>
-
-        <div style="background:var(--card);border:2.5px solid var(--ink);border-radius:20px;overflow:hidden;box-shadow:6px 6px 0 rgba(28,23,16,0.14)">
-          <img src="assets/photos/kayaking.jpg" alt="Two kayakers paddling across an open lake under a bright sky" loading="lazy" style="width:100%;height:190px;object-fit:cover;display:block;border-bottom:2.5px solid var(--ink)" />
-          <div style="padding:20px">
-            <div style="display:inline-block;padding:4px 10px;background:var(--accent);border-radius:100px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink);margin-bottom:10px">Outdoors</div>
-            <h3 style="font-weight:700;font-size:18px;margin:0 0 6px">Sunrise Kayaking</h3>
-            <p style="font-size:13.5px;color:rgba(28,23,16,0.62);margin:0">Out on the lake before the city wakes up. No experience needed.</p>
-          </div>
-        </div>
-
-        <div style="background:var(--card);border:2.5px solid var(--ink);border-radius:20px;overflow:hidden;box-shadow:6px 6px 0 rgba(28,23,16,0.14)">
-          <img src="assets/photos/horse-riding.jpg" alt="Two riders on horseback crossing an open ground at dusk, town rooftops behind" loading="lazy" style="width:100%;height:190px;object-fit:cover;display:block;border-bottom:2.5px solid var(--ink)" />
-          <div style="padding:20px">
-            <div style="display:inline-block;padding:4px 10px;background:var(--accent);border-radius:100px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink);margin-bottom:10px">Outdoors</div>
-            <h3 style="font-weight:700;font-size:18px;margin:0 0 6px">Evening Horse Riding</h3>
-            <p style="font-size:13.5px;color:rgba(28,23,16,0.62);margin:0">Golden hour on the ground at the edge of town. Beginners get a calm one.</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
   <!-- ===================== HOW IT WORKS ===================== -->
-  <section id="how-it-works" style="padding:96px clamp(20px,5vw,64px);background:var(--paper);border-top:3px solid var(--ink);border-bottom:3px solid var(--ink)">
-    <div style="max-width:1240px;margin:0 auto">
-      <div style="text-align:center;max-width:600px;margin:0 auto 56px">
-        <div style="font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:14px">How it works</div>
-        <h2 style="font-weight:800;font-size:clamp(28px,3.6vw,44px);line-height:1.1">Two sides, one neighbourhood.</h2>
+  <section id="how-it-works" class="band how g-paper" aria-labelledby="how-title">
+    <div class="wrap">
+      <div class="head">
+        <span class="kicker">How it works</span>
+        <h2 id="how-title">Three steps.<br>No group chat.</h2>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:44px">
-        <div>
-          <h3 style="font-weight:700;font-size:20px;margin:0 0 24px;padding-bottom:12px;border-bottom:2.5px solid var(--ink)">For organisers</h3>
-          <div style="display:flex;gap:16px;margin-bottom:24px">
-            <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:28px;color:var(--accent);flex:0 0 32px">1</div>
-            <div><h4 style="margin:0 0 6px;font-size:16px;font-weight:700">List your class or event</h4><p style="margin:0;font-size:14.5px;line-height:1.55;color:rgba(28,23,16,0.65)">One-time, multi-day, or recurring — your call.</p></div>
-          </div>
-          <div style="display:flex;gap:16px;margin-bottom:24px">
-            <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:28px;color:var(--accent);flex:0 0 32px">2</div>
-            <div><h4 style="margin:0 0 6px;font-size:16px;font-weight:700">Get discovered by neighbours</h4><p style="margin:0;font-size:14.5px;line-height:1.55;color:rgba(28,23,16,0.65)">Surfaced to the people actually near you.</p></div>
-          </div>
-          <div style="display:flex;gap:16px">
-            <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:28px;color:var(--accent);flex:0 0 32px">3</div>
-            <div><h4 style="margin:0 0 6px;font-size:16px;font-weight:700">Manage, check in, and grow</h4><p style="margin:0;font-size:14.5px;line-height:1.55;color:rgba(28,23,16,0.65)">Registrations, QR check-in, and a following that sticks around.</p></div>
-          </div>
-        </div>
-        <div>
-          <h3 style="font-weight:700;font-size:20px;margin:0 0 24px;padding-bottom:12px;border-bottom:2.5px solid var(--ink)">For neighbours</h3>
-          <div style="display:flex;gap:16px;margin-bottom:24px">
-            <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:28px;color:var(--accent);flex:0 0 32px">1</div>
-            <div><h4 style="margin:0 0 6px;font-size:16px;font-weight:700">Browse what's nearby</h4><p style="margin:0;font-size:14.5px;line-height:1.55;color:rgba(28,23,16,0.65)">A feed shaped by your block, your interests, this week.</p></div>
-          </div>
-          <div style="display:flex;gap:16px;margin-bottom:24px">
-            <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:28px;color:var(--accent);flex:0 0 32px">2</div>
-            <div><h4 style="margin:0 0 6px;font-size:16px;font-weight:700">Register and pay in one tap</h4><p style="margin:0;font-size:14.5px;line-height:1.55;color:rgba(28,23,16,0.65)">No calls, no back-and-forth, just a confirmed spot.</p></div>
-          </div>
-          <div style="display:flex;gap:16px">
-            <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:28px;color:var(--accent);flex:0 0 32px">3</div>
-            <div><h4 style="margin:0 0 6px;font-size:16px;font-weight:700">Show up, connect, come back</h4><p style="margin:0;font-size:14.5px;line-height:1.55;color:rgba(28,23,16,0.65)">Your ticket's in My Events; the community's just getting started.</p></div>
-          </div>
-        </div>
+      <ol class="tkt" style="list-style:none;margin:0;padding:0">
+        <li class="seg"><div class="no" aria-hidden="true">01</div><div class="eb" aria-hidden="true">ADMIT ONE</div><h3>Find it nearby.</h3><p>Classes and events in your neighbourhood, by category.</p></li>
+        <li class="seg"><div class="no" aria-hidden="true">02</div><div class="eb" aria-hidden="true">ADMIT ONE</div><h3>Register free.</h3><p>One tap. Free for neighbours.</p></li>
+        <li class="seg"><div class="no" aria-hidden="true">03</div><div class="eb" aria-hidden="true">ADMIT ONE</div><h3>Show your ticket at the door.</h3><p>A QR on your phone. Nothing to print.</p></li>
+      </ol>
+      <div class="after">
+        <p>No app to download. Ilaka works in your phone’s browser, and every listing has a link you can share.</p>
+        <svg class="seal" viewBox="0 0 200 200" aria-hidden="true">
+          <defs>
+            <filter id="press-a" x="-10%" y="-10%" width="120%" height="120%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="3" result="warp"/>
+              <feDisplacementMap in="SourceGraphic" in2="warp" scale="3.2" xChannelSelector="R" yChannelSelector="G" result="rough"/>
+              <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="1" seed="10" result="grain"/>
+              <feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -3.2 2.55" result="mask"/>
+              <feComposite in="rough" in2="mask" operator="in"/>
+            </filter>
+            <path id="ring-a" d="M100,100 m-77,0 a77,77 0 1,1 154,0 a77,77 0 1,1 -154,0"/>
+          </defs>
+          <g filter="url(#press-a)" fill="#1C1710" stroke="#1C1710">
+            <circle cx="100" cy="100" r="93" fill="none" stroke-width="7"/>
+            <circle cx="100" cy="100" r="62" fill="none" stroke-width="3" stroke-dasharray="7 5"/>
+            <text font-family="Darker Grotesque" font-weight="900" font-size="19" letter-spacing="3.2" stroke="none"><textPath href="#ring-a" textLength="476" lengthAdjust="spacing">GOING · ADMIT ONE · GOING · ADMIT ONE · </textPath></text>
+            <text x="100" y="113" text-anchor="middle" font-family="Darker Grotesque" font-weight="900" font-size="38" letter-spacing="1" stroke="none">GOING</text>
+          </g>
+        </svg>
       </div>
     </div>
   </section>
 
-  <!-- ===================== COMMUNITY (real photos) ===================== -->
-  <section id="community" style="padding:96px clamp(20px,5vw,64px);background:var(--paper)">
-    <div style="max-width:1240px;margin:0 auto">
-      <div style="max-width:640px;margin-bottom:44px">
-        <div style="font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:14px">Made in the neighbourhood</div>
-        <h2 style="font-weight:800;font-size:clamp(28px,3.6vw,44px);line-height:1.1">This is what an ilaka looks like.</h2>
-        <p style="font-size:15.5px;line-height:1.6;color:rgba(28,23,16,0.68);margin:16px 0 0">Ilaka started with our own crew in Sainikpuri: riders, makers, and friends who kept finding things to do two streets away. That is the whole idea, scaled to your block.</p>
+  <!-- ===================== FOR ORGANISERS ===================== -->
+  <section id="organisers" class="band org g-ink dots" aria-labelledby="org-title">
+    <div class="wrap cols">
+      <div>
+        <span class="kicker">For organisers</span>
+        <div class="head" style="margin-bottom:0">
+          <h2 id="org-title">Your class deserves a full room.</h2>
+          <p class="lead">Yoga teachers, tutors, run-club leads, potters, guitar teachers, game-night hosts. List it once and stop living in group chats.</p>
+        </div>
+        <ul class="feats">
+          <li><span><b>List in minutes.</b> A one-off event or a weekly class with its own schedule.</span></li>
+          <li><span><b>Share one link.</b> Drop it in every group you’re already in.</span></li>
+          <li><span><b>A real headcount.</b> Neighbours register free, so you know who’s coming.</span></li>
+          <li><span><b>Check people in at the door.</b> Scan their QR ticket.</span></li>
+          <li><span><b>Keep your regulars close.</b> Post announcements to your community and see how your listings are doing.</span></li>
+        </ul>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px">
-        <figure style="margin:0;background:var(--card);border:2.5px solid var(--ink);border-radius:20px;overflow:hidden;box-shadow:6px 6px 0 rgba(28,23,16,0.14)">
-          <img src="assets/photos/community-1.jpg" loading="lazy" alt="A large group of riders gathered by a reservoir outside Hyderabad" style="width:100%;height:230px;object-fit:cover;display:block;border-bottom:2.5px solid var(--ink)" />
-          <figcaption style="padding:14px 18px;font-size:13.5px;font-weight:600;color:rgba(28,23,16,0.72)">The whole crew, one weekend ride.</figcaption>
-        </figure>
-        <figure style="margin:0;background:var(--card);border:2.5px solid var(--ink);border-radius:20px;overflow:hidden;box-shadow:6px 6px 0 rgba(28,23,16,0.14)">
-          <img src="assets/photos/community-2.jpg" loading="lazy" alt="Riders and adventure motorcycles on a rocky plateau under a wide sky" style="width:100%;height:230px;object-fit:cover;display:block;border-bottom:2.5px solid var(--ink)" />
-          <figcaption style="padding:14px 18px;font-size:13.5px;font-weight:600;color:rgba(28,23,16,0.72)">A stop worth the detour.</figcaption>
-        </figure>
-        <figure style="margin:0;background:var(--card);border:2.5px solid var(--ink);border-radius:20px;overflow:hidden;box-shadow:6px 6px 0 rgba(28,23,16,0.14)">
-          <img src="assets/photos/community-3.jpg" loading="lazy" alt="A rider demonstrating bike control to a group gathered round at a skills session" style="width:100%;height:230px;object-fit:cover;display:block;border-bottom:2.5px solid var(--ink)" />
-          <figcaption style="padding:14px 18px;font-size:13.5px;font-weight:600;color:rgba(28,23,16,0.72)">Someone in the group always knows how.</figcaption>
-        </figure>
-        <figure style="margin:0;background:var(--card);border:2.5px solid var(--ink);border-radius:20px;overflow:hidden;box-shadow:6px 6px 0 rgba(28,23,16,0.14)">
-          <img src="assets/photos/community-4.jpg" alt="Friends out on rented e-bikes, stopped along a tree-lined city street" loading="lazy" style="width:100%;height:230px;object-fit:cover;display:block;border-bottom:2.5px solid var(--ink)" />
-          <figcaption style="padding:14px 18px;font-size:13.5px;font-weight:600;color:rgba(28,23,16,0.72)">A weekday evening, no plan required.</figcaption>
-        </figure>
+      <figure class="print" style="margin:0">
+        <span class="tape" style="left:-30px;top:22px;transform:rotate(-36deg)"></span>
+        <span class="tape" style="right:-30px;bottom:56px;transform:rotate(-36deg)"></span>
+        <img src="assets/photos/yoga.jpg" width="800" height="1000" loading="lazy" decoding="async" alt="A teacher leading an open-air yoga class through a side stretch" />
+      </figure>
+    </div>
+    <div class="wrap">
+      <div class="wanted">
+        <span class="tape l"></span><span class="tape r"></span>
+        <div><div class="w">Wanted:</div><div class="n">25</div></div>
+        <div>
+          <h3>founding organisers in Sainikpuri.</h3>
+          <p>We’ll sit with you and set up your first listing, in person. Your neighbours see it first.</p>
+          <a href="#join" class="btn ink role-cta" data-role="business">I run a class in Sainikpuri</a>
+        </div>
+        <svg class="seal" viewBox="0 0 200 200" aria-hidden="true">
+          <defs>
+            <filter id="press-b" x="-10%" y="-10%" width="120%" height="120%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="11" result="warp"/>
+              <feDisplacementMap in="SourceGraphic" in2="warp" scale="3.2" xChannelSelector="R" yChannelSelector="G" result="rough"/>
+              <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="1" seed="18" result="grain"/>
+              <feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -3.2 2.55" result="mask"/>
+              <feComposite in="rough" in2="mask" operator="in"/>
+            </filter>
+            <path id="ring-b" d="M100,100 m-77,0 a77,77 0 1,1 154,0 a77,77 0 1,1 -154,0"/>
+          </defs>
+          <g filter="url(#press-b)" fill="#1C1710" stroke="#1C1710">
+            <circle cx="100" cy="100" r="93" fill="none" stroke-width="7"/>
+            <circle cx="100" cy="100" r="62" fill="none" stroke-width="3" stroke-dasharray="7 5"/>
+            <text font-family="Darker Grotesque" font-weight="900" font-size="19" letter-spacing="3.2" stroke="none"><textPath href="#ring-b" textLength="476" lengthAdjust="spacing">HOSTED · SAINIKPURI · HOSTED · SAINIKPURI · </textPath></text>
+            <text x="100" y="111" text-anchor="middle" font-family="Darker Grotesque" font-weight="900" font-size="32" letter-spacing="1" stroke="none">HOSTED</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SAINIKPURI FIRST ===================== -->
+  <section id="sainikpuri" class="band where g-paper" aria-labelledby="where-title">
+    <div class="wrap cols">
+      <div>
+        <span class="kicker">Sainikpuri first</span>
+        <div class="head" style="margin-bottom:0">
+          <h2 id="where-title">Starting in Sainikpuri.<br><span>Then the next street over.</span></h2>
+          <p class="lead">Ilaka is built neighbourhood by neighbourhood, so what you see is actually near you. The web beta opens in Sainikpuri (500094) on Sat 31 Oct.</p>
+        </div>
+        <ul class="chips" aria-label="Things people run nearby">
+          <li>Yoga</li><li>Run clubs</li><li>Tuitions</li><li>Pottery</li><li>Guitar</li><li>Dance</li><li>Game nights</li><li>Trivia</li><li>Workshops</li>
+        </ul>
+      </div>
+      <div class="mapcard">
+        <svg viewBox="0 0 600 520" role="img" aria-label="Schematic map: Sainikpuri at the centre, with Alwal, Kapra, ECIL, AS Rao Nagar and Malkajgiri around it. Not to scale.">
+          <defs><pattern id="ht" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="8" cy="8" r="2.6" fill="#FF7A1F"/></pattern>
+            <radialGradient id="htfade"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#000"/></radialGradient>
+            <mask id="htm"><circle cx="300" cy="270" r="120" fill="url(#htfade)"/></mask></defs>
+          <g stroke="rgba(251,242,228,.12)" stroke-width="4" fill="none">
+            <path d="M-10 380 L610 170"/><path d="M200 540 L380 -10"/><path d="M-10 210 L610 430"/><path d="M470 540 L610 400"/>
+          </g>
+          <rect x="180" y="150" width="240" height="240" fill="url(#ht)" mask="url(#htm)"/>
+          <g fill="none" stroke="rgba(251,242,228,.38)" stroke-width="3" stroke-dasharray="10 10">
+            <circle cx="300" cy="270" r="96"/><circle cx="300" cy="270" r="170"/><circle cx="300" cy="270" r="244"/>
+          </g>
+          <g fill="#1C1710" stroke="#FBF2E4" stroke-width="4">
+            <circle cx="318" cy="364" r="8"/><circle cx="430" cy="392" r="8"/><circle cx="466" cy="282" r="8"/><circle cx="160" cy="124" r="8"/><circle cx="150" cy="432" r="8"/>
+          </g>
+          <g font-family="Plus Jakarta Sans" font-weight="800" font-size="16" letter-spacing="1.8" fill="rgba(251,242,228,.78)">
+            <text x="304" y="394" text-anchor="end">AS RAO NAGAR</text>
+            <text x="446" y="398">ECIL</text>
+            <text x="482" y="288">KAPRA</text>
+            <text x="176" y="130">ALWAL</text>
+            <text x="134" y="438" text-anchor="end">MALKAJGIRI</text>
+          </g>
+          <circle cx="300" cy="270" r="40" fill="#FF7A1F" stroke="#FBF2E4" stroke-width="8"/>
+          <circle cx="300" cy="270" r="15" fill="#1C1710"/>
+          <g transform="translate(340 196) rotate(-3)">
+            <rect x="0" y="0" width="226" height="44" rx="22" fill="#FFFBF3" stroke="#1C1710" stroke-width="3"/>
+            <text x="20" y="29" font-family="Plus Jakarta Sans" font-weight="800" font-size="16" letter-spacing="1.4" fill="#1C1710">SAINIKPURI</text>
+            <text x="140" y="30" font-family="Darker Grotesque" font-weight="900" font-size="21" letter-spacing="1.5" fill="rgba(28,23,16,.62)">500094</text>
+          </g>
+          <text x="580" y="500" text-anchor="end" font-family="Plus Jakarta Sans" font-weight="800" font-size="12" letter-spacing="2" fill="rgba(251,242,228,.5)">NOT TO SCALE</text>
+        </svg>
       </div>
     </div>
   </section>
 
   <!-- ===================== FOUNDERS ===================== -->
-  <section id="founders" style="padding:96px clamp(20px,5vw,64px);background:var(--paper)">
-    <div style="max-width:1000px;margin:0 auto">
-      <div style="max-width:680px;margin-bottom:44px">
-        <div style="font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:14px">Why we're building this</div>
-        <h2 style="font-weight:800;font-size:clamp(28px,3.6vw,44px);line-height:1.1">Meet the founders.</h2>
-        <p style="font-style:italic;font-weight:500;font-size:20px;line-height:1.55;margin:20px 0 0">"We kept missing out on things happening two streets away &mdash; a run club, a pottery workshop, a tuition class that would've been perfect. Ilaka started as a fix for our own neighbourhood, and it's built to work for yours next."</p>
+  <section id="founders" class="band founders g-paper" aria-labelledby="founders-title">
+    <div class="wrap">
+      <span class="kicker">Why we’re building this</span>
+      <div class="head" style="margin-bottom:0">
+        <h2 id="founders-title">Three neighbours from Sainikpuri.</h2>
+        <p class="quote">“We kept missing out on things happening two streets away: a run club, a pottery workshop, a tuition class that would’ve been perfect. Ilaka started as a fix for our own neighbourhood, and it’s built to work for yours next.”</p>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:26px">
-        <figure style="margin:0;background:var(--card);border:2.5px solid var(--ink);border-radius:20px;overflow:hidden;box-shadow:6px 6px 0 rgba(28,23,16,0.14)">
-          <img src="assets/photos/founder-ambarish.jpg" loading="lazy" alt="Ambarish Iyengar, founder and CEO of Ilaka, grinning next to someone in a tiger costume at a local festival" style="width:100%;aspect-ratio:4/5;object-fit:cover;display:block;border-bottom:2.5px solid var(--ink)" />
-          <figcaption style="padding:18px 20px">
-            <h3 style="font-weight:700;font-size:18px;margin:0 0 4px">Ambarish Iyengar</h3>
-            <div style="font-size:12.5px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);margin-bottom:10px">Founder &amp; CEO</div>
-            <p style="font-size:13.5px;line-height:1.55;color:rgba(28,23,16,0.62);margin:0">I built the thing. Now I’m pretending I know what I’m doing.</p>
-          </figcaption>
+      <div class="people">
+        <figure class="person">
+          <img src="assets/photos/founder-ambarish.jpg" width="640" height="800" loading="lazy" decoding="async" alt="Ambarish Iyengar, founder and CEO of Ilaka, grinning next to someone in a tiger costume at a local festival" />
+          <figcaption><h3>Ambarish Iyengar</h3><div class="role">Founder &amp; CEO</div><p>I built the thing. Now I’m pretending I know what I’m doing.</p></figcaption>
         </figure>
-        <figure style="margin:0;background:var(--card);border:2.5px solid var(--ink);border-radius:20px;overflow:hidden;box-shadow:6px 6px 0 rgba(28,23,16,0.14)">
-          <img src="assets/photos/founder-gagan.jpg" alt="Gagan Sagar, founder of Ilaka" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;display:block;border-bottom:2.5px solid var(--ink)" />
-          <figcaption style="padding:18px 20px">
-            <h3 style="font-weight:700;font-size:18px;margin:0 0 4px">Gagan Sagar</h3>
-            <div style="font-size:12.5px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);margin-bottom:10px">Founder</div>
-            <p style="font-size:13.5px;line-height:1.55;color:rgba(28,23,16,0.62);margin:0">10% strategy, 90% “let’s see what happens.”</p>
-          </figcaption>
+        <figure class="person">
+          <img src="assets/photos/founder-gagan.jpg" width="640" height="800" loading="lazy" decoding="async" alt="Gagan Sagar, founder of Ilaka" />
+          <figcaption><h3>Gagan Sagar</h3><div class="role">Founder</div><p>10% strategy, 90% “let’s see what happens.”</p></figcaption>
         </figure>
-        <figure style="margin:0;background:var(--card);border:2.5px solid var(--ink);border-radius:20px;overflow:hidden;box-shadow:6px 6px 0 rgba(28,23,16,0.14)">
-          <img src="assets/photos/founder-ankush.jpg" alt="Ankush Mahanty, founder of Ilaka" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;display:block;border-bottom:2.5px solid var(--ink)" />
-          <figcaption style="padding:18px 20px">
-            <h3 style="font-weight:700;font-size:18px;margin:0 0 4px">Ankush Mahanty</h3>
-            <div style="font-size:12.5px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);margin-bottom:10px">Founder</div>
-            <p style="font-size:13.5px;line-height:1.55;color:rgba(28,23,16,0.62);margin:0">Turning caffeine, chaos, and questionable ideas into companies. ☕</p>
-          </figcaption>
+        <figure class="person">
+          <img src="assets/photos/founder-ankush.jpg" width="640" height="800" loading="lazy" decoding="async" alt="Ankush Mahanty, founder of Ilaka" />
+          <figcaption><h3>Ankush Mahanty</h3><div class="role">Founder</div><p>Turning caffeine, chaos, and questionable ideas into companies.</p></figcaption>
         </figure>
       </div>
     </div>
   </section>
 
   <!-- ===================== FAQ ===================== -->
-  <section id="faq" style="padding:96px clamp(20px,5vw,64px);background:var(--ink);color:var(--paper)">
-    <div style="max-width:800px;margin:0 auto">
-      <div style="margin-bottom:44px">
-        <div style="font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:14px">FAQ</div>
-        <h2 style="font-weight:800;font-size:clamp(28px,3.6vw,42px);line-height:1.1">Good questions.</h2>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false"><span>Is Ilaka free to use?</span><span class="faq-icon">+</span></button>
-        <p class="faq-a">Free for anyone discovering and registering for events — always. Organisers pay a small commission when they get paid, and nothing at all until they pass 10 active members. Above that, a monthly plan scales with the size of their roster, starting at ₹199. <a href="pricing.html" style="text-decoration:underline">See full pricing</a>.</p>
+  <section id="faq" class="band faq g-ink" aria-labelledby="faq-title">
+    <div class="wrap">
+      <div class="head">
+        <span class="kicker">FAQ</span>
+        <h2 id="faq-title">Good questions.</h2>
       </div>
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false"><span>Which city are you launching in first?</span><span class="faq-icon">+</span></button>
-        <p class="faq-a">We're starting hyperlocal in Sainikpuri, Hyderabad, then expanding neighbourhood by neighbourhood.</p>
+        <button class="faq-q" aria-expanded="false"><span>Is Ilaka free to use?</span><span class="faq-icon" aria-hidden="true">+</span></button>
+        <p class="faq-a">Free for neighbours, always. Organisers pay a small commission only when they get paid. <a href="pricing.html">See pricing</a>.</p>
       </div>
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false"><span>I run a class or workshop — how do I get listed?</span><span class="faq-icon">+</span></button>
-        <p class="faq-a">Join the waitlist as an organiser and we'll bring you into early access to set up your first listing.</p>
+        <button class="faq-q" aria-expanded="false"><span>Where are you starting?</span><span class="faq-icon" aria-hidden="true">+</span></button>
+        <p class="faq-a">Sainikpuri, Hyderabad (500094). Then the next neighbourhood over, one at a time.</p>
       </div>
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false"><span>Do you handle payments?</span><span class="faq-icon">+</span></button>
-        <p class="faq-a">Yes — registration and payment happen right in the app, with tickets issued instantly.</p>
+        <button class="faq-q" aria-expanded="false"><span>I run a class or workshop. How do I get listed?</span><span class="faq-icon" aria-hidden="true">+</span></button>
+        <p class="faq-a">Join the waitlist as an organiser. We’re onboarding 25 founding organisers in Sainikpuri in person, and we’ll set up your first listing with you.</p>
       </div>
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false"><span>When does the beta launch?</span><span class="faq-icon">+</span></button>
-        <p class="faq-a">We're onboarding our first neighbourhood organisers now, with the beta app following shortly after.</p>
+        <button class="faq-q" aria-expanded="false"><span>Do you handle payments?</span><span class="faq-icon" aria-hidden="true">+</span></button>
+        <p class="faq-a">Not yet. At launch, registering on Ilaka is free. You get a QR ticket and show it at the door. Paid tickets come later.</p>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false"><span>Do I need to download an app?</span><span class="faq-icon" aria-hidden="true">+</span></button>
+        <p class="faq-a">No. Ilaka works in your phone’s browser.</p>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false"><span>When does the beta open?</span><span class="faq-icon" aria-hidden="true">+</span></button>
+        <p class="faq-a">The web beta opens in Sainikpuri on Saturday 31 October, starting with our first invites. Everyone on the waitlist gets in after that.</p>
       </div>
     </div>
   </section>
 
   <!-- ===================== FINAL WAITLIST ===================== -->
-  <section id="waitlist-final" style="padding:110px clamp(20px,5vw,64px);background:var(--accent);position:relative;overflow:hidden;background-image:radial-gradient(rgba(28,23,16,0.12) 1.8px, transparent 1.8px);background-size:26px 26px">
-    <div style="max-width:600px;margin:0 auto;text-align:center;position:relative;z-index:1">
-      <h2 style="font-weight:800;font-size:clamp(34px,5vw,58px);line-height:1.03;margin:0 0 16px;color:var(--ink)">Be first in line.</h2>
-      <p style="font-size:17px;line-height:1.6;color:rgba(28,23,16,0.75);margin:0 0 32px">Join the waitlist and get early access when Ilaka opens in Sainikpuri.</p>
-      <div class="wl" style="background:var(--paper);border:3px solid var(--ink);border-radius:24px;padding:32px;text-align:left;box-shadow:8px 8px 0 var(--ink)">
-        <div style="display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap">
-          <button class="role-btn is-active" data-role="business">I run a business/class</button>
-          <button class="role-btn" data-role="participant">I'm looking for things to do</button>
-        </div>
-        <form class="wl-form" novalidate style="display:flex;gap:10px;flex-wrap:wrap">
-          <input type="email" class="wl-email" placeholder="you@email.com" autocomplete="email" maxlength="254" style="flex:1 1 200px;min-width:180px;padding:14px 18px;border:2.5px solid var(--ink);border-radius:12px;font-size:15px;font-family:'Plus Jakarta Sans',sans-serif;background:var(--card);color:var(--ink)" />
-          <button type="submit" class="fade" style="padding:14px 24px;background:var(--ink);color:var(--paper);border:2.5px solid var(--ink);border-radius:12px;font-weight:800;font-family:'Bricolage Grotesque',sans-serif;font-size:15px;cursor:pointer">Join the waitlist</button>
-        </form>
-        <p class="wl-error" hidden></p>
-        <div class="wl-success" hidden></div>
+  <section id="waitlist-final" class="final g-accent" aria-labelledby="final-title">
+    <h2 id="final-title">Be first in line.</h2>
+    <p class="lead">Join the waitlist and get early access when Ilaka opens in Sainikpuri.</p>
+    <div class="wl">
+      <div class="roles">
+        <button type="button" class="role-btn is-active" data-role="business">I run a business/class</button>
+        <button type="button" class="role-btn" data-role="participant">I'm looking for things to do</button>
       </div>
+      <form class="wl-form" novalidate>
+        <label class="skip" for="wl-email-2">Email address</label>
+        <input id="wl-email-2" type="email" class="wl-email" placeholder="you@email.com" autocomplete="email" maxlength="254" />
+        <button type="submit" class="btn ink">Join the waitlist</button>
+      </form>
+      <p class="wl-error" hidden></p>
+      <div class="wl-success" hidden></div>
     </div>
   </section>
+</main>
 
-  <!-- ===================== FOOTER ===================== -->
-  <footer style="background:var(--ink);color:rgba(251,242,228,0.75);padding:56px clamp(20px,5vw,64px) 28px">
-    <div style="max-width:1240px;margin:0 auto;display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;padding-bottom:40px;border-bottom:1px solid rgba(251,242,228,0.15)">
-      <div style="flex:1 1 240px;max-width:320px">
-        <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:22px;color:var(--paper);margin-bottom:10px">ilaka<span style="color:var(--accent)">.</span></div>
-        <p style="font-size:14px;line-height:1.6;color:rgba(251,242,228,0.6);margin:0">Hyperlocal community, events &amp; classes — starting in Sainikpuri, Hyderabad.</p>
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <div class="about">
+        <div class="wm">ilaka<span class="ring" aria-hidden="true"></span></div>
+        <p>Hyperlocal community, events &amp; classes, starting in Sainikpuri, Hyderabad.</p>
       </div>
-      <div style="display:flex;flex-direction:column;gap:10px">
-        <div style="font-weight:700;color:var(--paper);margin-bottom:4px;font-size:14px">Product</div>
-        <a href="#how-it-works" style="font-size:14px">How it works</a>
-        <a href="#organisers" style="font-size:14px">For organisers</a>
-        <a href="#usecases" style="font-size:14px">Use cases</a>
-        <a href="#faq" style="font-size:14px">FAQ</a>
+      <div class="col">
+        <b>Product</b>
+        <a href="#how-it-works">How it works</a>
+        <a href="#organisers">For organisers</a>
+        <a href="#sainikpuri">Sainikpuri first</a>
+        <a href="#faq">FAQ</a>
       </div>
-      <div style="display:flex;flex-direction:column;gap:10px">
-        <div style="font-weight:700;color:var(--paper);margin-bottom:4px;font-size:14px">Legal</div>
-        <a href="terms.html" style="font-size:14px">Terms &amp; Conditions</a>
-        <a href="privacy.html" style="font-size:14px">Privacy Policy</a>
-        <a href="refunds.html" style="font-size:14px">Refund &amp; Cancellation</a>
-        <a href="shipping.html" style="font-size:14px">Shipping Policy</a>
-        <a href="pricing.html" style="font-size:14px">Pricing</a>
-        <a href="delete-account.html" style="font-size:14px">Delete Account</a>
+      <div class="col">
+        <b>Legal</b>
+        <a href="terms.html">Terms &amp; Conditions</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="refunds.html">Refund &amp; Cancellation</a>
+        <a href="shipping.html">Shipping Policy</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="delete-account.html">Delete Account</a>
       </div>
-      <div style="display:flex;flex-direction:column;gap:10px">
-        <div style="font-weight:700;color:var(--paper);margin-bottom:4px;font-size:14px">Connect</div>
-        <a href="contact.html" style="font-size:14px">Contact us</a>
-        <a href="mailto:support@ilaka.co.in" style="font-size:14px">support@ilaka.co.in</a>
-        <a href="https://www.instagram.com/ilakaofficial/" style="font-size:14px" target="_blank" rel="me noopener">Instagram</a>
-        <a href="https://www.linkedin.com/company/ilaka/" style="font-size:14px" target="_blank" rel="me noopener">LinkedIn</a>
-        <span style="font-size:14px">Sainikpuri, Hyderabad</span>
+      <div class="col">
+        <b>Connect</b>
+        <a href="contact.html">Contact us</a>
+        <a href="mailto:support@ilaka.co.in">support@ilaka.co.in</a>
+        <a href="https://instagram.com/ilaka.in" target="_blank" rel="me noopener">Instagram @ilaka.in</a>
+        <a href="https://www.linkedin.com/company/ilaka/" target="_blank" rel="me noopener">LinkedIn</a>
+        <span>Sainikpuri, Hyderabad</span>
       </div>
     </div>
-    <div style="max-width:1240px;margin:0 auto;padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;color:rgba(251,242,228,0.5)">
-      <span>© 2026 Ilaka. All rights reserved. Ilaka (Private Limited Company, incorporation pending) — Hyderabad, Telangana, India.</span>
+    <div class="base">
+      <span>© 2026 Ilaka. All rights reserved. Ilaka (Private Limited Company, incorporation pending), Hyderabad, Telangana, India.</span>
       <span>Made in Sainikpuri, Hyderabad.</span>
     </div>
-  </footer>
-
-</div>
+  </div>
+</footer>
 
 <script>
 (function(){
@@ -816,20 +1018,50 @@
     });
   });
 
-  // build the category marquee (two identical sets for a seamless loop)
-  var CATS = ["Yoga","Run Clubs","Pottery","Coding Bootcamps","Dance","Turf Football","Kayaking","Horse Riding","Festival Parties","Baking Workshops","Guitar Lessons","Tuition Classes","Book Clubs"];
-  document.querySelectorAll(".marquee-set").forEach(function(set){
-    CATS.forEach(function(c){
-      var label = document.createElement("span");
-      label.textContent = c;
-      label.style.cssText = "padding:0 26px;color:#FBF2E4;font-weight:700;font-family:'Bricolage Grotesque',sans-serif;font-size:19px;white-space:nowrap";
-      var dot = document.createElement("span");
-      dot.textContent = "•";
-      dot.style.cssText = "color:var(--accent);font-size:19px";
-      set.appendChild(label);
-      set.appendChild(dot);
+  // How-it-works ticket: draw the die-cut outline (notches at each tear, marigold
+  // perforation, one punch) for the ticket's real size, and redraw on resize.
+  // Without JS the ticket keeps its plain CSS border, so nothing breaks.
+  var tkt = document.querySelector(".tkt");
+  function drawTicket(){
+    if (!tkt) return;
+    var segs = tkt.querySelectorAll(".seg");
+    if (segs.length < 2) return;
+    var w = tkt.offsetWidth, h = tkt.offsetHeight;
+    var vertical = segs[1].offsetTop > segs[0].offsetTop;
+    var tears = [];
+    for (var i = 1; i < segs.length; i++) tears.push(vertical ? segs[i].offsetTop : segs[i].offsetLeft);
+    var r = 22, n = 15, sw = 3, sh = 8, ink = "#1C1710";
+    var d = "M" + r + ",0 ";
+    if (!vertical) tears.forEach(function(x){ d += "L" + (x - n) + ",0 A" + n + "," + n + " 0 0 0 " + (x + n) + ",0 "; });
+    d += "L" + (w - r) + ",0 A" + r + "," + r + " 0 0 1 " + w + "," + r + " ";
+    if (vertical) tears.forEach(function(y){ d += "L" + w + "," + (y - n) + " A" + n + "," + n + " 0 0 0 " + w + "," + (y + n) + " "; });
+    d += "L" + w + "," + (h - r) + " A" + r + "," + r + " 0 0 1 " + (w - r) + "," + h + " ";
+    if (!vertical) tears.slice().reverse().forEach(function(x){ d += "L" + (x + n) + "," + h + " A" + n + "," + n + " 0 0 0 " + (x - n) + "," + h + " "; });
+    d += "L" + r + "," + h + " A" + r + "," + r + " 0 0 1 0," + (h - r) + " ";
+    if (vertical) tears.slice().reverse().forEach(function(y){ d += "L0," + (y + n) + " A" + n + "," + n + " 0 0 0 0," + (y - n) + " "; });
+    d += "L0," + r + " A" + r + "," + r + " 0 0 1 " + r + ",0 Z";
+    var pad = sh + sw * 2;
+    var s = '<svg class="t-shape" aria-hidden="true" width="' + (w + pad) + '" height="' + (h + pad) + '" viewBox="' + (-sw) + ' ' + (-sw) + ' ' + (w + pad) + ' ' + (h + pad) + '" style="left:' + (-sw) + 'px;top:' + (-sw) + 'px">';
+    s += '<path d="' + d + '" fill="' + ink + '" transform="translate(' + sh + ',' + sh + ')"/>';
+    s += '<path d="' + d + '" fill="#FFFBF3" stroke="' + ink + '" stroke-width="' + sw + '" stroke-linejoin="round"/>';
+    var inset = n + 10;
+    tears.forEach(function(t){
+      s += vertical
+        ? '<line x1="' + inset + '" y1="' + t + '" x2="' + (w - inset) + '" y2="' + t + '" stroke="#FF7A1F" stroke-width="3" stroke-dasharray="9 9"/>'
+        : '<line x1="' + t + '" y1="' + inset + '" x2="' + t + '" y2="' + (h - inset) + '" stroke="#FF7A1F" stroke-width="3" stroke-dasharray="9 9"/>';
     });
-  });
+    s += '<circle cx="' + (w - 38) + '" cy="38" r="12" fill="#FF7A1F" stroke="' + ink + '" stroke-width="' + sw + '"/>';
+    s += '</svg>';
+    var old = tkt.querySelector("svg.t-shape"); if (old) old.remove();
+    tkt.insertAdjacentHTML("afterbegin", s);
+    tkt.classList.add("is-drawn");
+  }
+  if (tkt){
+    drawTicket();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(drawTicket);
+    if ("ResizeObserver" in window) new ResizeObserver(function(){ drawTicket(); }).observe(tkt);
+    else window.addEventListener("resize", drawTicket);
+  }
 
   applyRole();
 })();
