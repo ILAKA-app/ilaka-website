@@ -122,15 +122,6 @@ nav.main a.nav-cta:hover {
 
 main { padding: 48px 0 64px; }
 
-.hero {
-  background: var(--bg-soft);
-  padding: 64px 0 56px;
-  border-bottom: 1px solid var(--line);
-}
-
-.hero h1 { font-size: 2.1rem; margin: 0 0 14px; }
-.hero p.lead { font-size: 1.15rem; color: var(--muted); max-width: 640px; }
-
 h1 { font-size: 1.9rem; margin-top: 0; }
 h2 { font-size: 1.35rem; margin-top: 2.4em; }
 h3 { font-size: 1.1rem; margin-top: 1.8em; }
@@ -173,21 +164,12 @@ p { color: var(--ink); }
   .steps { grid-template-columns: 1fr; }
 }
 
-.two-col {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  margin-top: 28px;
-}
 .card {
   border: 1px solid var(--line);
   border-radius: 10px;
   padding: 22px;
 }
 .card h3 { margin-top: 0; }
-@media (max-width: 640px) {
-  .two-col { grid-template-columns: 1fr; }
-}
 
 table {
   width: 100%;
@@ -205,33 +187,6 @@ th {
   font-weight: 600;
 }
 tr:last-child td { border-bottom: none; }
-
-.tier-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-  margin: 24px 0;
-}
-.tier {
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  padding: 22px;
-}
-.tier.highlight {
-  border-color: var(--brand);
-  box-shadow: 0 0 0 1px var(--brand);
-}
-.tier .price {
-  font-size: 1.6rem;
-  font-weight: 700;
-  margin: 6px 0 14px;
-}
-.tier ul { padding-left: 20px; margin: 0; }
-.tier ul li { margin-bottom: 6px; font-size: 0.93rem; }
-@media (max-width: 780px) {
-  .tier-grid { grid-template-columns: 1fr; }
-}
-
 
 .callout {
   background: var(--bg-soft);
