@@ -7,6 +7,11 @@ Two layers live here:
 
 - **`index.html`** — the pre-launch landing page. A single self-contained file
   (neo-brutalist warm-cream design, inline CSS/JS) with the waitlist capture.
+  It opens with the "problem" story from the Instagram launch kit (forty WhatsApp
+  groups, posters on lamp posts, missed forwards, "who's coming?"), then how it
+  works, organisers, Sainikpuri-first, founders, FAQ and the final waitlist. Brand
+  fonts are self-hosted from `assets/fonts/` (SIL OFL 1.1, licences alongside), so
+  the page makes no third-party requests except the waitlist POST.
   See [`DESIGN.md`](DESIGN.md) and [`PRODUCT.md`](PRODUCT.md) for brand and voice.
 - **The legal pages** — required for Razorpay activation. Simpler layout sharing
   `css/style.css`, themed to the same palette and fonts.
