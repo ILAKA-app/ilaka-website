@@ -93,7 +93,8 @@
   .g-ink .muted{color:var(--paper-60)}
 
   /* wordmark: ilaka + the punched ring */
-  .wm{font-family:var(--display);font-weight:800;font-variation-settings:'opsz' 96;letter-spacing:-0.02em;line-height:1;white-space:nowrap}
+  .wm{font-family:var(--display);font-weight:800;font-variation-settings:'opsz' 96;letter-spacing:-0.02em;line-height:1;white-space:nowrap;display:inline-flex;align-items:center;gap:.22em}
+  .wm-mark{height:1.3em;width:auto;display:block}
   .wm .ring{display:inline-block;width:.38em;height:.38em;margin-left:.08em;border-radius:50%;border:.04em solid currentColor;vertical-align:baseline;
     background:radial-gradient(circle,var(--hole,var(--paper)) 0 .07em,var(--accent) calc(.07em + .5px))}
   .g-ink .wm .ring,.on-ink .wm .ring{--hole:var(--ink)}
@@ -444,7 +445,7 @@
 <!-- ===================== NAV ===================== -->
 <header class="nav">
   <div class="wrap">
-    <a href="#main" class="wm" aria-label="Ilaka, home">ilaka<span class="ring" aria-hidden="true"></span></a>
+    <a href="#main" class="wm" aria-label="Ilaka, home"><img src="assets/ilaka-logo.png" alt="" class="wm-mark">ilaka<span class="ring" aria-hidden="true"></span></a>
     <nav class="links" aria-label="Main">
       <a href="#how-it-works">How it works</a>
       <a href="#organisers">For organisers</a>
