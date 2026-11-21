@@ -452,7 +452,7 @@
       <a href="#organisers">For organisers</a>
       <a href="#sainikpuri">Sainikpuri</a>
       <a href="#faq">FAQ</a>
-      <a href="https://app.ilaka.co.in" target="_blank" rel="noopener" class="btn accent">Open the app</a>
+      <a href="#join" class="btn accent">Join the waitlist</a>
     </nav>
   </div>
 </header>
@@ -467,7 +467,7 @@
         <h1 id="hero-title">Forty WhatsApp<br>groups.<br>One yoga class.</h1>
         <p class="lead">That’s how most neighbourhoods find out what’s on. Ilaka puts it on one page, starting in Sainikpuri.</p>
         <div class="ctas">
-          <a href="https://app.ilaka.co.in" target="_blank" rel="noopener" class="btn accent">Open the app</a>
+          <a href="#join" class="btn accent">Join the waitlist</a>
           <a href="#organisers" class="btn ghost">I run a class</a>
         </div>
         <p class="note">Free for neighbours. The web beta is open now at <a href="https://app.ilaka.co.in">app.ilaka.co.in</a>.</p>
@@ -578,7 +578,17 @@
           <p>Register free. Show your ticket at the door. The organiser knows who’s coming.</p>
         </div>
         <div class="wl">
-          <a href="https://app.ilaka.co.in" target="_blank" rel="noopener" class="btn accent">Open the app</a>
+          <div class="roles">
+            <button type="button" class="role-btn is-active" data-role="business">I run a business/class</button>
+            <button type="button" class="role-btn" data-role="participant">I'm looking for things to do</button>
+          </div>
+          <form class="wl-form" novalidate>
+            <label class="skip" for="wl-email-1">Email address</label>
+            <input id="wl-email-1" type="email" class="wl-email" placeholder="you@email.com" autocomplete="email" maxlength="254" />
+            <button type="submit" class="btn accent">Join the waitlist</button>
+          </form>
+          <p class="wl-error" hidden></p>
+          <div class="wl-success" hidden></div>
           <p class="hint">Free for neighbours. No spam, ever.</p>
         </div>
       </div>
@@ -787,7 +797,17 @@
     <h2 id="final-title">Be first in line.</h2>
     <p class="lead">The web beta is open now in Sainikpuri.</p>
     <div class="wl">
-      <a href="https://app.ilaka.co.in" target="_blank" rel="noopener" class="btn ink">Open the app</a>
+      <div class="roles">
+        <button type="button" class="role-btn is-active" data-role="business">I run a business/class</button>
+        <button type="button" class="role-btn" data-role="participant">I'm looking for things to do</button>
+      </div>
+      <form class="wl-form" novalidate>
+        <label class="skip" for="wl-email-2">Email address</label>
+        <input id="wl-email-2" type="email" class="wl-email" placeholder="you@email.com" autocomplete="email" maxlength="254" />
+        <button type="submit" class="btn ink">Join the waitlist</button>
+      </form>
+      <p class="wl-error" hidden></p>
+      <div class="wl-success" hidden></div>
     </div>
   </section>
 </main>
