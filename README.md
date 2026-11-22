@@ -1,5 +1,13 @@
 # ilaka.co.in — public marketing site
 
+> **Migration in progress.** This site's source is also mirrored at
+> [`ILAKA-app/ilaka`](https://github.com/ILAKA-app/ilaka) under `apps/site`.
+> As of 2026-11-22, **this repo is still the live deploy source** — Vercel
+> hasn't been repointed yet (blocked on the monorepo being private and this
+> Vercel team being on the Hobby plan, which can't connect to private
+> org-owned repos). Until that's resolved, keep committing here; changes
+> won't reach the monorepo's `apps/site` automatically.
+
 The live site at **https://www.ilaka.co.in**, deployed from this repo on Vercel.
 Plain static HTML/CSS/JS: no build step, no framework, no dependencies.
 
